@@ -5,19 +5,19 @@
   
 
   
-  <title>css-堆叠上下文 | mozhenghong</title>
+  <title>flex布局与布局套路 | mozhenghong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="堆叠顺序 当父元素未被定位时(从里到外)： (1)z-index为负 (2)background (3)border (4)div (5)float (6)文字、内联 (7)position (z-index:0) (8)z-index大于0 同级相互比较，谁出现后谁靠前  当父元素被定位时(relative)（成立了一个堆叠上下文）   从里到外的顺序为(2)=&amp;gt;(3)=&amp;gt;(1)=&amp;">
+  <meta name="description" content="flex布局 flex container属性（父元素的属性）   flex-direction:确定主轴方向  row从左到右 row-reverse从右到左 column从上到下 column-reverse从下到上   flex-wrap:是否换行  nowrap不换行 wrap换行 wrap-reverse   flex-flow:flex-direction与flex-flex-wrap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css-堆叠上下文">
-<meta property="og:url" content="http://yoursite.com/2018/10/30/css-堆叠上下文/index.html">
+<meta property="og:title" content="flex布局与布局套路">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/flex布局与布局套路/index.html">
 <meta property="og:site_name" content="mozhenghong">
-<meta property="og:description" content="堆叠顺序 当父元素未被定位时(从里到外)： (1)z-index为负 (2)background (3)border (4)div (5)float (6)文字、内联 (7)position (z-index:0) (8)z-index大于0 同级相互比较，谁出现后谁靠前  当父元素被定位时(relative)（成立了一个堆叠上下文）   从里到外的顺序为(2)=&amp;gt;(3)=&amp;gt;(1)=&amp;">
+<meta property="og:description" content="flex布局 flex container属性（父元素的属性）   flex-direction:确定主轴方向  row从左到右 row-reverse从右到左 column从上到下 column-reverse从下到上   flex-wrap:是否换行  nowrap不换行 wrap换行 wrap-reverse   flex-flow:flex-direction与flex-flex-wrap">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-30T03:21:49.523Z">
+<meta property="og:updated_time" content="2018-10-30T06:48:08.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css-堆叠上下文">
-<meta name="twitter:description" content="堆叠顺序 当父元素未被定位时(从里到外)： (1)z-index为负 (2)background (3)border (4)div (5)float (6)文字、内联 (7)position (z-index:0) (8)z-index大于0 同级相互比较，谁出现后谁靠前  当父元素被定位时(relative)（成立了一个堆叠上下文）   从里到外的顺序为(2)=&amp;gt;(3)=&amp;gt;(1)=&amp;">
+<meta name="twitter:title" content="flex布局与布局套路">
+<meta name="twitter:description" content="flex布局 flex container属性（父元素的属性）   flex-direction:确定主轴方向  row从左到右 row-reverse从右到左 column从上到下 column-reverse从下到上   flex-wrap:是否换行  nowrap不换行 wrap换行 wrap-reverse   flex-flow:flex-direction与flex-flex-wrap">
   
     <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-css-堆叠上下文" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-flex布局与布局套路" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/30/css-堆叠上下文/" class="article-date">
-  <time datetime="2018-10-30T03:05:57.000Z" itemprop="datePublished">2018-10-30</time>
+    <a href="/2018/10/30/flex布局与布局套路/" class="article-date">
+  <time datetime="2018-10-30T06:21:35.000Z" itemprop="datePublished">2018-10-30</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      css-堆叠上下文
+      flex布局与布局套路
     </h1>
   
 
@@ -86,42 +86,92 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><ol>
-<li><p>当父元素未被定位时(从里到外)：</p>
-<p>(1)z-index为负</p>
-<p>(2)background</p>
-<p>(3)border</p>
-<p>(4)div</p>
-<p>(5)float</p>
-<p>(6)文字、内联</p>
-<p>(7)position (z-index:0)</p>
-<p>(8)z-index大于0</p>
-<p><em>同级相互比较，谁出现后谁靠前</em></p>
+        <h2 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h2><ol>
+<li>flex container属性（父元素的属性）</li>
+</ol>
+<ul>
+<li><p>flex-direction:确定主轴方向</p>
+<ul>
+<li>row从左到右</li>
+<li>row-reverse从右到左</li>
+<li>column从上到下</li>
+<li>column-reverse从下到上</li>
+</ul>
 </li>
-<li><p>当父元素被定位时(relative)（成立了一个堆叠上下文）</p>
+<li><p>flex-wrap:是否换行</p>
+<ul>
+<li>nowrap不换行</li>
+<li>wrap换行</li>
+<li>wrap-reverse</li>
+</ul>
+</li>
+<li><p>flex-flow:flex-direction与flex-flex-wrap的简写</p>
+</li>
+<li><p>justify-content:主轴方向对齐方式</p>
+<ul>
+<li>space-between两端无空隙</li>
+<li>space-around</li>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+</ul>
+</li>
+<li><p>alian-items:侧轴方向对齐方式</p>
+<ul>
+<li>stretch：所有元素跟最高的一样高</li>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>baseline</li>
+</ul>
+</li>
+<li><p>align-content:多行多列的对齐方式</p>
+</li>
+</ul>
+<ol start="2">
+<li>flex item 的属性（子元素属性）</li>
+</ol>
+<ul>
+<li><p>flex-grow:增长比例（空间过多时，多余部分按子元素增长比例分配给各个子元素）</p>
+</li>
+<li><p>flex-shrink：收缩比例（空间不够用时）</p>
+</li>
+<li><p>flex-basis：默认的各个元素大小</p>
+</li>
+<li><p>flex：flex-grow、flex-shrink、flex-basis的缩写</p>
+</li>
+<li><p>align-self:自身的对齐方式</p>
+</li>
+</ul>
+<h3 id="布局套路"><a href="#布局套路" class="headerlink" title="布局套路"></a>布局套路</h3><ol>
+<li>float</li>
+</ol>
+<ul>
+<li>子元素全加 float: left （right）</li>
+<li>父元素加 .clearfix</li>
+</ul>
+<ol start="2">
+<li>flex</li>
+</ol>
+<ul>
+<li>父元素加 display: flex</li>
+<li>父元素加 justify-content: space-between;</li>
+</ul>
+<ol start="3">
+<li><p>如果宽度不够，可以用 margin: 0 -4px;</p>
+</li>
+<li><p>使用calc</p>
 </li>
 </ol>
-<p>从里到外的顺序为(2)=&gt;(3)=&gt;(1)=&gt;(4)=&gt;(5)=&gt;(6)=&gt;(7)=&gt;(8)</p>
-<h3 id="堆叠上下文-the-stacking-context"><a href="#堆叠上下文-the-stacking-context" class="headerlink" title="堆叠上下文(the stacking context)"></a>堆叠上下文(the stacking context)</h3><p><strong>我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么，若满足下列条件之一的就是堆叠上下文：</strong></p>
-<ul>
-<li>根元素 (HTML),</li>
-<li>z-index 值不为 “auto”的 绝对/相对定位，</li>
-<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</li>
-<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
-<li>transform 属性值不为 “none”的元素，</li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li>position: fixed</li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
+<p><code>width:calc(25%-8px)</code></p>
+<ol start="5">
+<li>class不能为ad，否则会被当成广告屏蔽</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-堆叠上下文/" data-id="cjnvdfdl50003as3qvc04ci2c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjnvdfdlc0008as3qyyd41vsx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,19 +180,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/10/30/css-icon全解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          css-icon全解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/30/css-宽度与高度/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/30/css-移动端页面（响应式）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">css-宽度与高度</div>
+      <div class="article-nav-title">css-移动端页面（响应式）</div>
     </a>
   
 </nav>
