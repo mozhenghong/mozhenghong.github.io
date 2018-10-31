@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>css-BFC | mozhenghong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="BFC(block formatting context):块格式化上下文 理解BFC BFC和堆叠上下文都没有定义，只有特性/功能 满足下列条件之一的就是块格式化上下文：  根元素或其它包含它的元素 浮动元素 (元素的 float 不是 none) 绝对定位元素 (元素具有 position 为 absolute 或 fixed) 内联块 (元素具有 display: inline-block)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css-BFC">
+<meta property="og:url" content="http://yoursite.com/2018/10/31/css-BFC/index.html">
+<meta property="og:site_name" content="mozhenghong">
+<meta property="og:description" content="BFC(block formatting context):块格式化上下文 理解BFC BFC和堆叠上下文都没有定义，只有特性/功能 满足下列条件之一的就是块格式化上下文：  根元素或其它包含它的元素 浮动元素 (元素的 float 不是 none) 绝对定位元素 (元素具有 position 为 absolute 或 fixed) 内联块 (元素具有 display: inline-block)">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-31T00:01:38.439Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css-BFC">
+<meta name="twitter:description" content="BFC(block formatting context):块格式化上下文 理解BFC BFC和堆叠上下文都没有定义，只有特性/功能 满足下列条件之一的就是块格式化上下文：  根元素或其它包含它的元素 浮动元素 (元素的 float 不是 none) 绝对定位元素 (元素具有 position 为 absolute 或 fixed) 内联块 (元素具有 display: inline-block)">
+  
+    <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">mozhenghong</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-css-BFC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/31/css-BFC/" class="article-date">
+  <time datetime="2018-10-31T00:00:41.000Z" itemprop="datePublished">2018-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css-BFC
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>BFC(block formatting context):块格式化上下文</em></p>
+<h3 id="理解BFC"><a href="#理解BFC" class="headerlink" title="理解BFC"></a>理解BFC</h3><ol>
+<li><p>BFC和堆叠上下文都没有定义，只有特性/功能</p>
+<p>满足下列条件之一的就是块格式化上下文：</p>
+<ul>
+<li>根元素或其它包含它的元素</li>
+<li>浮动元素 (元素的 float 不是 none)</li>
+<li>绝对定位元素 (元素具有 position 为 absolute 或 fixed)</li>
+<li>内联块 (元素具有 display: inline-block)</li>
+<li>表格单元格 (元素具有 display: table-cell，HTML表格单元格默认属性)</li>
+<li>表格标题 (元素具有 display: table-caption, HTML表格标题默认属性)</li>
+<li>具有overflow 且值不是 visible 的块元素，</li>
+<li>display: flow-root（让当前元素触发BFC，无其他用途）</li>
+<li>column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。</li>
+</ul>
+</li>
+</ol>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ol>
+<li>功能1：爸爸管儿子</li>
+</ol>
+<p>用 BFC 包住浮动元素。(这并不是清除浮动，.clearfix 才是清除浮动）<br><br>儿子加float后，爸爸管不住儿子，但是给爸爸加以下其中一种，变为块格式化上下文，就可以管住儿子：</p>
+<ul>
+<li>float</li>
+<li>position:absolute;</li>
+<li>display:inline-block;</li>
+<li>overflow:auto;</li>
+<li>display:table-cell;</li>
+<li>display:flow-root;</li>
+</ul>
+<ol start="2">
+<li>功能2：兄弟之间划清界限</li>
+</ol>
+<ul>
+<li><p>两个BFC之间有界限<br><br>比如给一个<code>&lt;div&gt;</code>加float，给另一个兄弟<code>&lt;div&gt;</code>加<code>display:flow-root</code>就可以实现左右自适应布局。</p>
+</li>
+<li><p>BFC是某个div的特性，BFC里可以有文档流。</p>
+</li>
+<li><p>如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">&lt;div class=&quot;children&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.children&#123;</span><br><span class="line">    margin-top:30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>parent不会包住children的margin，但如果把parent变为BFC就可以包住；或者给parent加一个border-top也可以。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/31/css-BFC/" data-id="cjnwedsfo0001by3qhlqlroxn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/31/CSS-REM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS-REM</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/31/css-BFC/">css-BFC</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/31/CSS-REM/">CSS-REM</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/flex布局与布局套路/">flex布局与布局套路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/css-移动端页面（响应式）/">css-移动端页面（响应式）</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/css-icon全解/">css-icon全解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 莫正红<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

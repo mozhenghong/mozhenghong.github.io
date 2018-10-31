@@ -5,19 +5,16 @@
   
 
   
-  <title>css-堆叠上下文 | mozhenghong</title>
+  <title>CSS-REM | mozhenghong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="堆叠顺序 当父元素未被定位时(从里到外)： (1)z-index为负 (2)background (3)border (4)div (5)float (6)文字、内联 (7)position (z-index:0) (8)z-index大于0 同级相互比较，谁出现后谁靠前  当父元素被定位时(relative)（成立了一个堆叠上下文）   从里到外的顺序为(2)=&amp;gt;(3)=&amp;gt;(1)=&amp;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="css-堆叠上下文">
-<meta property="og:url" content="http://yoursite.com/2018/10/30/css-堆叠上下文/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="CSS-REM">
+<meta property="og:url" content="http://yoursite.com/2018/10/31/CSS-REM/index.html">
 <meta property="og:site_name" content="mozhenghong">
-<meta property="og:description" content="堆叠顺序 当父元素未被定位时(从里到外)： (1)z-index为负 (2)background (3)border (4)div (5)float (6)文字、内联 (7)position (z-index:0) (8)z-index大于0 同级相互比较，谁出现后谁靠前  当父元素被定位时(relative)（成立了一个堆叠上下文）   从里到外的顺序为(2)=&amp;gt;(3)=&amp;gt;(1)=&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-30T03:21:49.523Z">
+<meta property="og:updated_time" content="2018-10-30T23:56:46.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css-堆叠上下文">
-<meta name="twitter:description" content="堆叠顺序 当父元素未被定位时(从里到外)： (1)z-index为负 (2)background (3)border (4)div (5)float (6)文字、内联 (7)position (z-index:0) (8)z-index大于0 同级相互比较，谁出现后谁靠前  当父元素被定位时(relative)（成立了一个堆叠上下文）   从里到外的顺序为(2)=&amp;gt;(3)=&amp;gt;(1)=&amp;">
+<meta name="twitter:title" content="CSS-REM">
   
     <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
   
@@ -64,10 +61,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-css-堆叠上下文" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-CSS-REM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/30/css-堆叠上下文/" class="article-date">
-  <time datetime="2018-10-30T03:05:57.000Z" itemprop="datePublished">2018-10-30</time>
+    <a href="/2018/10/31/CSS-REM/" class="article-date">
+  <time datetime="2018-10-30T23:56:46.000Z" itemprop="datePublished">2018-10-31</time>
 </a>
     
   </div>
@@ -78,7 +75,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      css-堆叠上下文
+      CSS-REM
     </h1>
   
 
@@ -86,42 +83,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><ol>
-<li><p>当父元素未被定位时(从里到外)：</p>
-<p>(1)z-index为负</p>
-<p>(2)background</p>
-<p>(3)border</p>
-<p>(4)div</p>
-<p>(5)float</p>
-<p>(6)文字、内联</p>
-<p>(7)position (z-index:0)</p>
-<p>(8)z-index大于0</p>
-<p><em>同级相互比较，谁出现后谁靠前</em></p>
-</li>
-<li><p>当父元素被定位时(relative)（成立了一个堆叠上下文）</p>
-</li>
-</ol>
-<p>从里到外的顺序为(2)=&gt;(3)=&gt;(1)=&gt;(4)=&gt;(5)=&gt;(6)=&gt;(7)=&gt;(8)</p>
-<h3 id="堆叠上下文-the-stacking-context"><a href="#堆叠上下文-the-stacking-context" class="headerlink" title="堆叠上下文(the stacking context)"></a>堆叠上下文(the stacking context)</h3><p><strong>我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么，若满足下列条件之一的就是堆叠上下文：</strong></p>
-<ul>
-<li>根元素 (HTML),</li>
-<li>z-index 值不为 “auto”的 绝对/相对定位，</li>
-<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</li>
-<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
-<li>transform 属性值不为 “none”的元素，</li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li>position: fixed</li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-堆叠上下文/" data-id="cjnwedsfz0006by3qh8p0brgz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjnwedsfi0000by3qf8imp0p4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,19 +96,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/10/30/css-icon全解/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/10/31/css-BFC/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          css-icon全解
+          css-BFC
         
       </div>
     </a>
   
   
-    <a href="/2018/10/30/css-宽度与高度/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/30/flex布局与布局套路/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">css-宽度与高度</div>
+      <div class="article-nav-title">flex布局与布局套路</div>
     </a>
   
 </nav>
