@@ -62,6 +62,135 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-scss基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/05/scss基础/" class="article-date">
+  <time datetime="2018-11-05T15:05:26.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/05/scss基础/">scss基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="学习环境"><a href="#学习环境" class="headerlink" title="学习环境"></a>学习环境</h2><ol>
+<li>安装parcel</li>
+</ol>
+<ul>
+<li>在终端打开要编写scss的文件夹</li>
+<li>运行以下命令安装parcel：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm i -g parcel-bundler</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行<code>npx parcel index.html</code>得到网址，打开网址预览scss，可直接将scss转换为css</li>
+</ul>
+<ol start="2">
+<li>在线学习环境</li>
+</ol>
+<p><a href="https://codepen.io/" target="_blank" rel="noopener">codepen</a></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ol>
+<li>嵌套选择器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ul&#123;</span><br><span class="line">    属性：属性值；</span><br><span class="line">    &gt;li&#123;</span><br><span class="line">        属性：属性值；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li>变量</li>
+</ol>
+<p>例如:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$color:red;</span><br><span class="line">body&#123;</span><br><span class="line">    border: 1px solid $color;</span><br><span class="line">    div&#123;</span><br><span class="line">        background:$color;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>mixin</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@mixin xxx($color)&#123;</span><br><span class="line">border: 1px solid $color;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    @include xxx(red);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>placeholder</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%box&#123;</span><br><span class="line">    box-shadow:0 0 3px block;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    div&#123;</span><br><span class="line">        @extend %box;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="scss相关"><a href="#scss相关" class="headerlink" title="scss相关"></a>scss相关</h3><ol>
+<li><p>BEM（css命名法）</p>
+<p>Block Element Modifior</p>
+</li>
+<li><p>&amp;符号</p>
+<p> 可以用&amp;代替父元素的class值</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UserCard&#123;</span><br><span class="line">    UserCard-name&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">取代为：</span><br><span class="line">UserCard&#123;</span><br><span class="line">    &amp;-name&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>嵌套属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">font:&#123;</span><br><span class="line">    size:16px;</span><br><span class="line">    weight:blod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注释</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行：//xxxxxxx</span><br><span class="line">多行：/*xxxx</span><br><span class="line">      xxxx*/</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>变量作用域</li>
+</ol>
+<ul>
+<li>将变量放到某个选择器的{}中，作用域为这个选择器</li>
+<li>作用域覆盖，就近原则</li>
+<li><code>&amp;red:#f60 !global</code>强制变为全局变量</li>
+<li><code>$red-color</code>和<code>$red_color</code>被看作是一个变量</li>
+</ul>
+<ol start="6">
+<li>运算</li>
+</ol>
+<ul>
+<li>css:<code>calc(200px / 2)</code></li>
+<li>scss:直接做加、减、乘、模（100%3   //1）</li>
+<li>除要满足其中一个条件:<br><br>.该值存在一个变量，例如<code>$red/3</code><br><br>.用括号括起来，例如：<code>（100px/3）</code><br><br>.该值作为另一个表达式的一部分，例如<code>100px/3-0</code></li>
+</ul>
+<ol start="7">
+<li>颜色相关运算</li>
+</ol>
+<ul>
+<li><code>darken(颜色，10%)</code>颜色加深10%.</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$red:#ff0000;</span><br><span class="line">color:$red+#888888;</span><br><span class="line">==&gt;color:#ff8888;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>字符串插值</li>
+</ol>
+</li>
+<li><p><code>#{$red}</code>插入<code>#ff0000</code>字符串。</p>
+</li>
+</ul>
+<ol start="9">
+<li>循环<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$step:25%</span><br><span class="line">$n:10%</span><br><span class="line">@keyframes animationname&#123;</span><br><span class="line">    @for $i from 0 to 4&#123;</span><br><span class="line">        #&#123;$i*$step&#125;&#123;</span><br><span class="line">            @if $i%2==0&#123;</span><br><span class="line">                transforrm:translateX(-$n)</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    transform:translateX($n)</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="scss响应式"><a href="#scss响应式" class="headerlink" title="scss响应式"></a>scss响应式</h3><ol>
+<li>动态缩放–单位：vw</li>
+</ol>
+<ul>
+<li><p>scss函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@function px($npx)&#123;</span><br><span class="line">    @return $npx/375*100vw;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用：</p>
+</li>
+</ul>
+<p><code>width: px(61)</code>//宽度为61px，转换为vw单位。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjo52ir3c000cmv3qt6qcj3wi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Bootstrap框架" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/31/Bootstrap框架/" class="article-date">
@@ -124,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjnww5tlc0000vy3qpwe31m5h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjo52ir2s0001mv3q2hhcj630" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjnww5tls0005vy3q7n8fqqyf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjo52ir2y0004mv3q3kkm8xdx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjnww5to2000ivy3qb95iapdx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjo52ir3h000hmv3qz20xqg3b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -328,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/算法初级/" data-id="cjnww5to4000jvy3q6ivb6p0y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/算法初级/" data-id="cjo52ir3x000imv3q1sn83wan" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +535,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-BFC/" data-id="cjnww5tlq0004vy3q3ps59wfw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-BFC/" data-id="cjo52ir2v0002mv3qsbbc53mt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,7 +620,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjnww5tlj0001vy3qgjyt629i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjo52ir2x0003mv3qcjxjd4hg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -611,7 +740,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjnww5tm5000cvy3qquhywe7p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjo52ir38000amv3qagsa4z7b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -663,7 +792,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjnww5tly0009vy3qtq90il72" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjo52ir340008mv3q7fh9g6sg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -723,74 +852,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-icon全解/" data-id="cjnww5tlt0006vy3qrwch45ge" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-堆叠上下文" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/30/css-堆叠上下文/" class="article-date">
-  <time datetime="2018-10-30T03:05:57.000Z" itemprop="datePublished">2018-10-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/30/css-堆叠上下文/">css-堆叠上下文</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><ol>
-<li><p>当父元素未被定位时(从里到外)：</p>
-<p>(1)z-index为负</p>
-<p>(2)background</p>
-<p>(3)border</p>
-<p>(4)div</p>
-<p>(5)float</p>
-<p>(6)文字、内联</p>
-<p>(7)position (z-index:0)</p>
-<p>(8)z-index大于0</p>
-<p><em>同级相互比较，谁出现后谁靠前</em></p>
-</li>
-<li><p>当父元素被定位时(relative)（成立了一个堆叠上下文）</p>
-</li>
-</ol>
-<p>从里到外的顺序为(2)=&gt;(3)=&gt;(1)=&gt;(4)=&gt;(5)=&gt;(6)=&gt;(7)=&gt;(8)</p>
-<h3 id="堆叠上下文-the-stacking-context"><a href="#堆叠上下文-the-stacking-context" class="headerlink" title="堆叠上下文(the stacking context)"></a>堆叠上下文(the stacking context)</h3><p><strong>我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么，若满足下列条件之一的就是堆叠上下文：</strong></p>
-<ul>
-<li>根元素 (HTML),</li>
-<li>z-index 值不为 “auto”的 绝对/相对定位，</li>
-<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</li>
-<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
-<li>transform 属性值不为 “none”的元素，</li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li>position: fixed</li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-堆叠上下文/" data-id="cjnww5tlv0007vy3q4os5he8o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-icon全解/" data-id="cjo52ir320007mv3qqkkxjzgp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -804,7 +866,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -823,7 +885,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -834,6 +896,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/11/05/scss基础/">scss基础</a>
+          </li>
         
           <li>
             <a href="/2018/10/31/Bootstrap框架/">Bootstrap框架</a>
@@ -849,10 +915,6 @@
         
           <li>
             <a href="/2018/10/31/算法初级/">算法初级</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/31/css-BFC/">css-BFC</a>
           </li>
         
       </ul>
