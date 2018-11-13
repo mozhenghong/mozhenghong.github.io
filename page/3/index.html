@@ -62,6 +62,119 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-deepinLinux系统安装及软件安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/15/deepinLinux系统安装及软件安装/" class="article-date">
+  <time datetime="2018-10-15T03:13:20.000Z" itemprop="datePublished">2018-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/15/deepinLinux系统安装及软件安装/">deepinLinux系统安装及软件安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="deepin-Linux系统安装"><a href="#deepin-Linux系统安装" class="headerlink" title="deepin Linux系统安装"></a>deepin Linux系统安装</h1><p>我选择的为U盘安装</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-ff1eb5a1e5e963fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>从<a href="https://www.deepin.org/" target="_blank" rel="noopener">官方网站</a> 下载Linux镜像文件，解压到当前文件夹，可以看到深度启动盘制作工具，图标如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-35aa7d818d6c2dcb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>打开深度启动盘制作工具，插入你的U盘，勾选格式化硬盘，等待写入完成。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-31ee52ebddb9a960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>启动盘制作完成后，在U盘插入的情况下，关机重启电脑，以下是一些电脑的U盘装系统启动热键，在开机时按相应的按键。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-716d48f92ddf997f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>进入安装界面,选择需要安装的语言:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-4cc5fd75d961a6ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>进入账户界面，输入用户名和密码:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-81afd78441b14b9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>选择安装位置 :</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-e2f2c816135ca691.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>点击安装，安装完成后，拔掉U盘，重启计算机即可而。</p>
+<h1 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h1><h2 id="命令行安装-atool-压缩软件"><a href="#命令行安装-atool-压缩软件" class="headerlink" title="命令行安装 atool 压缩软件"></a>命令行安装 atool 压缩软件</h2><p><strong>搜索软件</strong><br><code>apt-cache search atool</code><br><strong>安装软件</strong><br><code>sudo apt-get install atool</code></p>
+<p>  <em>安装软件是需要超级权限的，在命令前面加上 sudo ，回车后需要输入你的密码。第一次使用 linux 的朋友需要注意，这里，输入密码是看不见的（连星号都不会有），盲输入。</em></p>
+<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>在终端中输入以下命令，便可安装node：<br><code>sudo apt-get install -y nodejs</code></p>
+<p>此时运行 node 是没有作用的，必须要输入 nodejs 才能进入 node 环境，此时你可以更改映射。<br>终端中输入：<code>cd ~</code><br>          <code>ls -a</code><br>可以看到 .bash_profile 文件，如下图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-9a7bccca60717900.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>编辑 .bash_profile 文件（可以用 vi 编辑，命令<code>vi .bash_profile</code>）<br>然后输入： <code>alias node=&quot;nodejs&quot;</code><br>如果发现不能输入，可以按ESC,然后按I键，便能插入了。<br>然后狂按 Esc ，输入:wq 保存退出。</p>
+<p>输入以下命令使刚刚的命令生效，然后便可以输入 node 进入环境了。<br><code>~/.bash_profile</code></p>
+<p>然后安装npm包管理器，在终端中输入：<br><code>sudo apt-get install -y npm</code></p>
+<p>最后，输入<code>node -v</code> 和 <code>npm -v</code> ，可以查看node和npm版本</p>
+<h2 id="VSCode的安装与配置"><a href="#VSCode的安装与配置" class="headerlink" title="VSCode的安装与配置"></a>VSCode的安装与配置</h2><p>从<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">官放网站</a>下载安装包。</p>
+<p><strong>安装插件</strong></p>
+<p>按 Ctrl + Shift + X 打开扩展面板，然后在商店中搜索以下常用插件，点击第一个结果的「安装」按钮，安装完成后，点击重载以启用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Auto close Tag  // 自动闭合标签</span><br><span class="line">Auto Rename Tag  // 自动更改标签</span><br><span class="line">Beautify css/sass/scss </span><br><span class="line">Bracket Pair Colorizer  // 括号不同颜色</span><br><span class="line">Color Highlight  // 颜色显示</span><br><span class="line">Guides  // 缩进</span><br><span class="line">HTML CSS Support</span><br><span class="line">JavaScript（ES6） code snippets</span><br><span class="line">markdownlint</span><br><span class="line">open in browser</span><br><span class="line">Path Intellisense</span><br><span class="line">seti-icons</span><br><span class="line">TODO Highlight</span><br><span class="line">Vetur</span><br></pre></td></tr></table></figure>
+<h2 id="配置GitHub"><a href="#配置GitHub" class="headerlink" title="配置GitHub"></a>配置GitHub</h2><p>进入<a href="https://github.com/settings/keys" target="_blank" rel="noopener"></a></p>
+<p>点击 New SSH key，我们需要输入 Title 和 Key，Title自己输入即可，要得到key，需要点击<em>generating SSH keys</em> ,进入<strong>Connecting to GitHub with SSH</strong>页面，然后下滑，点击<em>Generating a new SSH key and adding it to the ssh-agent</em></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14473072-761b9b402eb05656.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>进入到以下页面：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14473072-2f22648fb49b67c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在终端中输入给出的命令，把邮箱改为自己的邮箱，按三次回车，出现以下页面</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14473072-70e76d4179ed9143.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>然后运行<code>cat ~/.ssh/id_rsa.pub</code> ，得到一串东西，完整的复制这串东西，在key中粘贴这串东西。</p>
+<p>点击 Add SSH key</p>
+<p>回到终端，运行 <code>ssh -T git@github.com</code>  ，输入yes，回车。如果你看到 <em>Permission denied (publickey)</em>. 就说明你失败了，就要从头开始；如果你看到<em>Hi FrankFang! You’ve successfully authenticated, but GitHub does not provide shell access.</em>就说明你成功了！</p>
+<h2 id="git的配置"><a href="#git的配置" class="headerlink" title="git的配置"></a>git的配置</h2><p>首先，打开终端，在命令行中输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name 你的英文名字</span><br><span class="line">git config --global user.email 你的常用邮箱</span><br><span class="line">git config --global push.default simple</span><br><span class="line">git config --global core.quotepath false</span><br><span class="line">git config --global core.editor &quot;vim&quot;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/15/deepinLinux系统安装及软件安装/" data-id="cjof7p055000kuh3q0erwbpd0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-开博大吉" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/14/开博大吉/" class="article-date">
+  <time datetime="2018-10-14T14:21:41.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/14/开博大吉/">开博大吉</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开博大吉</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/14/开博大吉/" data-id="cjof7p051000huh3qmts8o5c1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/14/hello-world/" class="article-date">
@@ -97,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/hello-world/" data-id="cjo52ir3a000bmv3qqczmi53v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/hello-world/" data-id="cjof7p04r000buh3q692d7wxf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,6 +256,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/13/js里的数据类型转换/">js里的数据类型转换</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/13/js里的数据类型/">js里的数据类型</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/05/scss基础/">scss基础</a>
           </li>
         
@@ -152,14 +273,6 @@
         
           <li>
             <a href="/2018/10/31/css-IFC/">css-IFC</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/31/数据结构/">数据结构</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/31/算法初级/">算法初级</a>
           </li>
         
       </ul>

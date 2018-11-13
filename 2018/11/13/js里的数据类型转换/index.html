@@ -5,19 +5,16 @@
   
 
   
-  <title>数据结构 | mozhenghong</title>
+  <title>js里的数据类型转换 | mozhenghong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="哈希表   一个key对应一个value（数组也是哈希）  哈希计数排序：有好多桶，一个桶里只能放一类数，比如这个桶里只能放1，下个桶里只能放2  桶排序：一个桶里可以放好几类，比如这个桶里放1-10，下个桶里放11-20，减少了桶的数量  基数排序：先按个位数排（入桶）==&amp;gt;按顺序全部出桶==&amp;gt;按十位数排序（入桶）==&amp;gt;按顺序出桶==&amp;gt;按百位数排序…    队列（que">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/数据结构/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="js里的数据类型转换">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/js里的数据类型转换/index.html">
 <meta property="og:site_name" content="mozhenghong">
-<meta property="og:description" content="哈希表   一个key对应一个value（数组也是哈希）  哈希计数排序：有好多桶，一个桶里只能放一类数，比如这个桶里只能放1，下个桶里只能放2  桶排序：一个桶里可以放好几类，比如这个桶里放1-10，下个桶里放11-20，减少了桶的数量  基数排序：先按个位数排（入桶）==&amp;gt;按顺序全部出桶==&amp;gt;按十位数排序（入桶）==&amp;gt;按顺序出桶==&amp;gt;按百位数排序…    队列（que">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-31T01:59:14.795Z">
+<meta property="og:updated_time" content="2018-11-13T02:20:08.990Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构">
-<meta name="twitter:description" content="哈希表   一个key对应一个value（数组也是哈希）  哈希计数排序：有好多桶，一个桶里只能放一类数，比如这个桶里只能放1，下个桶里只能放2  桶排序：一个桶里可以放好几类，比如这个桶里放1-10，下个桶里放11-20，减少了桶的数量  基数排序：先按个位数排（入桶）==&amp;gt;按顺序全部出桶==&amp;gt;按十位数排序（入桶）==&amp;gt;按顺序出桶==&amp;gt;按百位数排序…    队列（que">
+<meta name="twitter:title" content="js里的数据类型转换">
   
     <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
   
@@ -64,10 +61,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-数据结构" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-js里的数据类型转换" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/31/数据结构/" class="article-date">
-  <time datetime="2018-10-31T01:14:42.000Z" itemprop="datePublished">2018-10-31</time>
+    <a href="/2018/11/13/js里的数据类型转换/" class="article-date">
+  <time datetime="2018-11-13T02:20:08.000Z" itemprop="datePublished">2018-11-13</time>
 </a>
     
   </div>
@@ -78,7 +75,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据结构
+      js里的数据类型转换
     </h1>
   
 
@@ -86,55 +83,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>哈希表</li>
-</ol>
-<ul>
-<li><p>一个key对应一个value（数组也是哈希）</p>
-</li>
-<li><p>哈希计数排序：有好多桶，一个桶里只能放一类数，比如这个桶里只能放1，下个桶里只能放2</p>
-</li>
-<li><p>桶排序：一个桶里可以放好几类，比如这个桶里放1-10，下个桶里放11-20，减少了桶的数量</p>
-</li>
-<li><p>基数排序：先按个位数排（入桶）==&gt;按顺序全部出桶==&gt;按十位数排序（入桶）==&gt;按顺序出桶==&gt;按百位数排序…</p>
-</li>
-</ul>
-<ol start="2">
-<li>队列（queue）</li>
-</ol>
-<ul>
-<li>先进先出（排队）</li>
-<li>可以用数组实现</li>
-<li>入：q.push()<br>出：q.shift()</li>
-</ul>
-<ol start="3">
-<li>栈（stack）</li>
-</ol>
-<ul>
-<li>先进后出（盗梦空间）</li>
-<li>可以用数组实现</li>
-<li>入：stack.push()<br>出:stack.pop()</li>
-</ul>
-<ol start="4">
-<li>链表</li>
-</ol>
-<ul>
-<li>数组无法直接删除中间的一项，链表可以</li>
-</ul>
-<ol start="5">
-<li>树（tree）</li>
-</ol>
-<ul>
-<li>二叉树：每次最多分两个叉</li>
-<li>满二叉树：叶子全长满</li>
-<li>完全二叉树：只能缺最右边的叶子节点（可以缺好几个，但必须都是从右往左缺的）</li>
-<li>堆排序：每个父节点的元素值都大于子节点。</li>
-</ul>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjof7p05e000luh3qvqav4z2j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型转换/" data-id="cjof7p04v000duh3qjav1p1lo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,19 +96,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/10/31/css-IFC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          css-IFC
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/31/算法初级/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/11/13/js里的数据类型/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">算法初级</div>
+      <div class="article-nav-title">js里的数据类型</div>
     </a>
   
 </nav>
