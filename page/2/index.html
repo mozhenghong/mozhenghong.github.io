@@ -62,6 +62,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS-REM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/31/CSS-REM/" class="article-date">
+  <time datetime="2018-10-30T23:56:46.000Z" itemprop="datePublished">2018-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/31/CSS-REM/">CSS-REM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><ul>
+<li>px ==&gt;像素</li>
+<li>em ==&gt;一个m的宽度，一个汉字的宽度</li>
+<li>rem ==&gt;root em ,根元素（HTML）的font-size</li>
+<li>vh ==&gt;viewport height 视口高度</li>
+<li>vw ==&gt;视口宽度</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ol>
+<li>网页默认的font-size为16px；</li>
+<li>如果chrome设置了最小字号为12px，就算在css中设置了font-size：6px，也会显示为12px</li>
+</ol>
+<h4 id="rem和em的区别"><a href="#rem和em的区别" class="headerlink" title="rem和em的区别"></a>rem和em的区别</h4><ul>
+<li>rem：HTML的font-size</li>
+<li>em：自己的font-size</li>
+</ul>
+<h3 id="手机端使用REM"><a href="#手机端使用REM" class="headerlink" title="手机端使用REM"></a>手机端使用REM</h3><ul>
+<li>所有手机显示的界面都是一样的，只是大小不同，所以把一切单位以宽度为基准就可以完美还原设计。</li>
+<li><p>使用js动态调整REM，使1 rem == viewport width；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">     var pageWidth = window.innerWidth</span><br><span class="line">     document.write(&apos;&lt;style&gt;html&#123;font-size:&apos;+pageWidth+&apos;px;&#125;&lt;/style&gt;&apos;)</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rem可以和其它单位一起使用。</p>
+</li>
+</ul>
+<h2 id="在-SCSS-里使用-PX2REM"><a href="#在-SCSS-里使用-PX2REM" class="headerlink" title="在 SCSS 里使用 PX2REM"></a>在 SCSS 里使用 PX2REM</h2><ol>
+<li>安装node-sass</li>
+</ol>
+<ul>
+<li>npm config set registry <a href="https://registry.npm.taobao.org/hanshu" target="_blank" rel="noopener">https://registry.npm.taobao.org/hanshu</a></li>
+<li>touch ~/.bashrc</li>
+<li>echo ‘export<br>SASS_BINARY_SITE=”<a href="https://npm.taobao.org/mirrors/node-sass&quot;&#39;" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/node-sass&quot;&#39;</a> &gt;&gt; ~/.bashrc</li>
+<li>source ~/.bashrc</li>
+<li>npm i -g node-sass</li>
+</ul>
+<p><em>如果安装时出现权限方面的错误，则可以运行</em><br><br><code>sudo npm install --unsafe -perm -g node-sass</code></p>
+<ol start="2">
+<li>使用node-sass将scss转换为css</li>
+</ol>
+<ul>
+<li>mkdir ~/Desktop/scss-demo</li>
+<li>cd ~/Desktop/scss-demo</li>
+<li>mkdir scss css</li>
+<li>touch scss/style.scss</li>
+<li>start scss/style.scss</li>
+<li>node-sass -wr scss -o css</li>
+<li>编辑 scss 文件就会自动得到 css 文件<br><br>在 scss 文件里添加:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@function px( $px )&#123;</span><br><span class="line">  @return $px/$designWidth*10 + rem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后在css中将需要写长度的地方引用函数 px（设计稿的宽度）即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjop5m3g90003e43qi668p13i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-flex布局与布局套路" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/30/flex布局与布局套路/" class="article-date">
@@ -172,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjofvte5s000c4o3qa6pknnl2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjop5m3gv000ee43quazkpw7r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjofvte5m00094o3qanzqhlcu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjop5m3gk000ae43qvs5rq96h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-icon全解/" data-id="cjofvte5h00064o3qudia5d98" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-icon全解/" data-id="cjop5m3gi0009e43qu7zy0jni" class="article-share-link">Share</a>
       
       
     </footer>
@@ -351,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-堆叠上下文/" data-id="cjofvte5j00074o3qmhhvxh3a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-堆叠上下文/" data-id="cjop5m3gb0004e43qmxfiqgtn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-宽度与高度/" data-id="cjofvte5l00084o3qzover24c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-宽度与高度/" data-id="cjop5m3ge0006e43q1h44ulcp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -535,7 +620,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/css基础/" data-id="cjofvte5o000a4o3q4dwk8u5h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/css基础/" data-id="cjop5m3gh0008e43qg1gp4l80" class="article-share-link">Share</a>
       
       
     </footer>
@@ -645,7 +730,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/24/HTML/" data-id="cjofvte5c00024o3qq0kl8opi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/24/HTML/" data-id="cjop5m3gm000be43q6qiw9fcu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -759,7 +844,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/23/命令行基础/" data-id="cjofvte6j000j4o3qrxlys476" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/23/命令行基础/" data-id="cjop5m3ik000ne43qk2smc8j3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -860,85 +945,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/HTTP入门/" data-id="cjofvte5e00034o3qtshzz1mu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-利用Hexo写博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/17/利用Hexo写博客/" class="article-date">
-  <time datetime="2018-10-17T02:10:36.000Z" itemprop="datePublished">2018-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/17/利用Hexo写博客/">利用Hexo写博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装Hexo-写第一篇博客"><a href="#安装Hexo-写第一篇博客" class="headerlink" title="安装Hexo,写第一篇博客"></a>安装Hexo,写第一篇博客</h1><p>1.在 GitHub 上新建一个空仓库，仓库名称是「你的Github用户名.github.io」</p>
-<p>2.进入安全目录(例如cd ~/Desktop)，运行<code>npm install -g hexo-cli</code>，安装 Hexo</p>
-<p>3.运行<code>hexo init myBlog</code>然后打开 <code>cd myBlog</code></p>
-<p>4.运行<code>npm i</code></p>
-<p>5.运行<code>hexo new 开博大吉</code>，会看到一个 .md 文件的路径</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9617841-9e8acbaed530e51b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>6.运行<code>xdg-open xxxxxxxxxxxxxxxxxxx.md</code>（我的是Linux系统，所以用xdg-open打开文件，window系统可用start打开，但是必须将路径中的\改为/。当然用vi打开更方便一点），可以编辑文件（当然也可以直接在VSCode中打开文件夹进行编辑）</p>
-<p>7.<code>xdg-open _config.yml</code>，编辑网站配置</p>
-<ul>
-<li>把第 6 行的 title 改成你想要的名字</li>
-<li>把第 9 行的 author 改成你的大名</li>
-<li>把最后一行的 type 改成 type: git</li>
-<li>在最后一行后面新增一行，左边与 type 平齐，加上一行 repo: 仓库地址 （请将仓库地址改为「你的用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: 开头）</li>
-</ul>
-<p>8.<code>npm install hexo-deployer-git --save</code>，安装 git 部署插件</p>
-<p>9.运行<code>hexo deploy</code></p>
-<p>10.进入「你的用户名.github.io」对应的仓库，打开 GitHub Pages 功能（点击 Settings，往下滚动页面，选中 master branch 然后点击 Save，右上角出现一个链接，就是预览链接），你应该会看到一个预览链接。用浏览器访问「预览链接/index.html」就应该看到了你的博客！（GitHub Pages 存在延迟，如果没看到，过三分钟再刷新看看）</p>
-<h1 id="第二篇博客"><a href="#第二篇博客" class="headerlink" title="第二篇博客"></a>第二篇博客</h1><p>1.运行<code>hexo new 博客名</code></p>
-<p>2.复制显示的路径，使用 <code>xdg-open 路径</code> 来编辑它</p>
-<p>3.运行<code>hexo generate</code></p>
-<p>4.运行<code>hexo deploy</code> 然后就可以看新写的博客了</p>
-<h1 id="上传源代码"><a href="#上传源代码" class="headerlink" title="上传源代码"></a>上传源代码</h1><p><em>「Github用户名.github.io」上保存的只是你的博客，并没有保存生成博客的程序代码，你需要再创建一个名为 blog-generator 的空仓库，用来保存 myBlog 里面的生成博客的程序代码。</em></p>
-<p>1.在Github上创建一个空仓库</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9617841-128165ddd560273a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>2.在终端中执行 <em>…or create a new repository on the command line</em>下的命令.这样一来，你的博客发布在了「Github用户名.github.io」而你的生成博客的程序代码发布在了「blog-generator」。</p>
-<p>3.每次运行完 hexo deploy 之后，要再运行一下add/commit/pull/push 将将程序代码推到Github上。</p>
-<h1 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h1><p>1.进入<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener"></a>，找一个主题，进入主题的 GitHub 首页，点击<strong>clone or download</strong>，复制主题地址。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9617841-64daf5a55aece471.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>2.终端中运行<code>cd themes</code></p>
-<p>3.<code>git clone 主题地址</code></p>
-<p>4.<code>cd ..</code></p>
-<p>5.将 _config.yml 的第 75 行改为 <em>theme: hexo-theme-next</em></p>
-<p>6.<code>hexo generate</code></p>
-<p>7.<code>hexo deploy</code>，这样你博客主题地址就会更改。</p>
-<h1 id="markdown使用指南"><a href="#markdown使用指南" class="headerlink" title="markdown使用指南"></a>markdown使用指南</h1><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>在标题前面添加#可以设置标题，几级标题就在前面加几个#，一共可以写到六级标题。（#与标题之间有一个空格）</p>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表在文字前面加-即可，有序列表在文字前面加1.即可（-和1.与文字中间有一个空格）</p>
-<h3 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h3><p>使用 [显示文本]（链接地址）可插入链接</p>
-<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>使用 ! [] (图片链接)可以插入图片</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p> 在引用的文字前面加&gt; 即可</p>
-<h3 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h3><p>在文字前后各加两个*可以使文字变为粗体。<br>在文字前后各加一个星号可以使文字变成斜体。</p>
-<h3 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a>代码引用</h3><p>单行代码引用，只需要在代码前后各加一个 <code>即可。
-多行代码引用，只需要在代码前后各加三个 ``</code> 即可。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/利用Hexo写博客/" data-id="cjofvte5z000i4o3qlynp84yd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/17/HTTP入门/" data-id="cjop5m3g70002e43qniki26jv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -984,6 +991,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/20/JS数组/">JS数组</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/13/原型与原型链/">原型与原型链</a>
           </li>
         
@@ -997,10 +1008,6 @@
         
           <li>
             <a href="/2018/11/05/scss基础/">scss基础</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/31/Bootstrap框架/">Bootstrap框架</a>
           </li>
         
       </ul>
