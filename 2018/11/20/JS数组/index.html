@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-216d455abd6bd302.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-8b13f339c0ecc379.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-b83fa79fa9aab7dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-20T03:08:48.837Z">
+<meta property="og:updated_time" content="2018-11-21T02:16:48.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS数组">
 <meta name="twitter:description" content="Array用法 基本用法 Array(3)//{length:3} ,3表示length    Array(3,3) // [3,3] ,第一个3并不表示length了    构造函数   基本类型==&amp;gt;Number、String、Boolean 不加new，返回基本类型 加new，返回对象      复杂类型==&amp;gt;Array、Function 不加new，返回对象 加new，也返回对">
@@ -129,20 +129,6 @@
 </li>
 </ul>
 <p><img src="https://upload-images.jianshu.io/upload_images/9617841-7811060a8850d0c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h3 id="函数声明方法"><a href="#函数声明方法" class="headerlink" title="函数声明方法"></a>函数声明方法</h3><ol>
-<li><p>具名函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function f(x,y)&#123;</span><br><span class="line">    return x + y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>匿名函数 + var</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var f</span><br><span class="line">f = function(x,y)&#123; return x+y &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>具名函数 + var</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var f1 </span><br><span class="line">f1= function f2(x,y)&#123;</span><br><span class="line">    return x+y</span><br><span class="line">&#125;</span><br><span class="line">console.log(f2) // undefined</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>window.Function + var</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var f</span><br><span class="line">f = new Function(&apos;x&apos;,&apos;y&apos;,&apos;return x+y&apos;)</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
 <h3 id="Js中数组的本质"><a href="#Js中数组的本质" class="headerlink" title="Js中数组的本质"></a>Js中数组的本质</h3><ul>
 <li>人类理解：数组就是数据的有序集合</li>
 <li>JS理解：数组就是原型链中有 Array.prototype 的对象</li>
@@ -208,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjop5tuiw0003v43qxotpcz14" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjoqkdxmy0001gq3qmihv01oj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,6 +202,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/11/21/函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          函数
+        
+      </div>
+    </a>
   
   
     <a href="/2018/11/13/原型与原型链/" id="article-nav-older" class="article-nav-link-wrap">
@@ -257,6 +252,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/21/函数/">函数</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/20/JS数组/">JS数组</a>
           </li>
         
@@ -270,10 +269,6 @@
         
           <li>
             <a href="/2018/11/13/js里的数据类型/">js里的数据类型</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/05/scss基础/">scss基础</a>
           </li>
         
       </ul>
