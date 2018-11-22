@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>DOM | mozhenghong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DOM DOM是一棵树（tree），树上有Node，Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。 DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,将 DOM 展现到内存中。 DOM树形结构如下，其中每个节点(包括矩形节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/DOM/index.html">
+<meta property="og:site_name" content="mozhenghong">
+<meta property="og:description" content="DOM DOM是一棵树（tree），树上有Node，Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。 DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,将 DOM 展现到内存中。 DOM树形结构如下，其中每个节点(包括矩形节">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-a5ee96193393ef7b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-dfadc5bdd4e4ebf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-22T03:41:42.759Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM">
+<meta name="twitter:description" content="DOM DOM是一棵树（tree），树上有Node，Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。 DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,将 DOM 展现到内存中。 DOM树形结构如下，其中每个节点(包括矩形节">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9617841-a5ee96193393ef7b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">mozhenghong</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/DOM/" class="article-date">
+  <time datetime="2018-11-22T02:47:04.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DOM
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><font color="blue">DOM是一棵树（tree），树上有Node，</font>Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。</li>
+<li>DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,将 DOM 展现到内存中。</li>
+<li>DOM树形结构如下，其中<font color="blue">每个节点(包括矩形节点和椭圆形节点)都是Node类型！</font></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-a5ee96193393ef7b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li><p>document节点是Document构造函数的一个实例对象,document节点代表了整个文档(整个树型结构,我们可以通过直接输入<code>document</code>来获取document节点;html节点是Element构造函数的一个实例对象,html节点又叫根节点我们可以通过输入<code>document.documentElement</code>来获得html节点;<br>椭圆形的文本节点:”请输入文字” 是Text构造函数的一个实例对象(文本节点是Text构造函数的一个实例对象)</p>
+</li>
+<li><p>Node Element Text 的关系如下图所示：</p>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-dfadc5bdd4e4ebf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="Node类型的一些属性和方法"><a href="#Node类型的一些属性和方法" class="headerlink" title="Node类型的一些属性和方法"></a>Node类型的一些属性和方法</h2><h3 id="Node属性"><a href="#Node属性" class="headerlink" title="Node属性"></a>Node属性</h3><ol>
+<li><p>节点本身某些特征的属性:</p>
+<ul>
+<li>Node.nodeName:<ul>
+<li>看着DOM,如果你不确定某个Node节点是什么类型(不确定某个Node节点是矩形还是椭圆形)，例如document.body.nodeName//‘BODY’</li>
+<li>返回节点类型,返回的值是大写的HTML元素名, 只有’svg’返回小写。</li>
+</ul>
+</li>
+<li>Node.nodeType:<ul>
+<li>根据Node类型返回某些数字</li>
+<li>Element类型,返回的数字是1</li>
+<li>Text类型,返回的数字是3</li>
+<li>Document类型,返回的数字的9</li>
+</ul>
+</li>
+<li>Node.textContent<ul>
+<li>返回当前节点及其所有后代的文本内容</li>
+<li>值得注意的是,因为Node.textContent是Node属性,所以文本节点也是有textContent的，innerHTML和innerText是Element的属性,所以TextNode.innerHTML返回的是undefined,注意,并不是返回null</li>
+<li>innerText也会返回当前节点及其所有后代的文本内容，但是会跳过script和style！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>节点结构关系属性</p>
+<ul>
+<li>兄弟关系<ul>
+<li>Node.nextSibling</li>
+<li>Node.previousSibling</li>
+<li>以上两个属性可能会获取到空格（text节点）</li>
+</ul>
+</li>
+<li>儿子关系<ul>
+<li>Node.childNodes（返回的是一个伪数组,里面是Node节点,并且伪数组内的值是动态变化的）</li>
+<li>Node.firstChild</li>
+<li>Node.lastChild</li>
+</ul>
+</li>
+<li>父关系<ul>
+<li>Node.parentNode</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Node-方法"><a href="#Node-方法" class="headerlink" title="Node 方法"></a>Node 方法</h3><ul>
+<li><p>Node.appendChild()</p>
+</li>
+<li><p>Node.hasChildNodes()</p>
+<ul>
+<li>返回true或false</li>
+</ul>
+</li>
+<li><p>Node.cloneNode()</p>
+<ul>
+<li>（）中是什么也没有，或者值为false，则为浅拷贝，只拷贝当前节点</li>
+<li>（）中值为true，则为深拷贝，会拷贝节点和节点中的所有内容 </li>
+</ul>
+</li>
+<li><p>Node.insertBefore()</p>
+</li>
+<li><p>Node.removeChild()</p>
+</li>
+<li><p>Node.replaceChild()</p>
+</li>
+<li><p>Node.contains()</p>
+</li>
+<li><p>Node.isEqualNode()</p>
+<ul>
+<li>判断两个节点是否是相同的节点</li>
+</ul>
+</li>
+<li><p>Node.isSameNode()<br>  -判断两个节点是否为同一个节点，类似于严格相等 </p>
+</li>
+<li><p>Node.normalize()</p>
+<ul>
+<li>使常规化 </li>
+</ul>
+</li>
+</ul>
+<h2 id="document节点的一些属性和方法"><a href="#document节点的一些属性和方法" class="headerlink" title="document节点的一些属性和方法"></a>document节点的一些属性和方法</h2><h3 id="document属性"><a href="#document属性" class="headerlink" title="document属性"></a>document属性</h3><ol>
+<li><p>用于指向其他节点(快捷获取某些特殊节点)的属性</p>
+<ul>
+<li>document.documentElement指向 DOM 的 html节点</li>
+<li>document.activeElement指向获得焦点的那个节点</li>
+</ul>
+</li>
+<li><p>返回文档特定元素的伪数组集合的属性</p>
+<ul>
+<li>document.links<ul>
+<li>返回所有a标签</li>
+</ul>
+</li>
+<li>document.forms</li>
+<li>document.images</li>
+<li>document.embeds</li>
+</ul>
+</li>
+<li>返回文档信息的属性<ul>
+<li>document.location</li>
+<li>document.readyState返回的是当前文档的状态,</li>
+</ul>
+</li>
+</ol>
+<h3 id="document方法"><a href="#document方法" class="headerlink" title="document方法"></a>document方法</h3><ol>
+<li><p>获取节点</p>
+<ul>
+<li>document.querySelector(AAAA)<ul>
+<li>返回的是第一个符合CSS选择器AAAA条件的节点 </li>
+<li>除了是 document ,还可以是某个 Node 节点</li>
+</ul>
+</li>
+<li>document.querySelectorAll(AAAA)<ul>
+<li>除了是 document ,还可以是某个 Node 节点 </li>
+<li>返回的是伪数组,里面包含了所有符合选择器的节点 </li>
+<li>返回的结果不是动态的,不会实时反映元素节点的变化</li>
+</ul>
+</li>
+<li>document.getElementById()</li>
+<li>document.getElementsByClassName()</li>
+<li>document.getElementsByName()<ul>
+<li>通过name属性获取节点 </li>
+</ul>
+</li>
+<li>document.getElementsByTagName()</li>
+</ul>
+</li>
+<li><p>生成节点</p>
+<ul>
+<li>document.createElement(“div”)生成Element节点，也就是div标签</li>
+<li>document.createTextNode(“你好”)生成Text节点</li>
+</ul>
+</li>
+<li><p>添加节点</p>
+<ul>
+<li>xxx.appendChild（’div’）<ul>
+<li>给id为xxx的元素添加div标签</li>
+<li>也可以添加文本节点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/DOM/" data-id="cjos1xodx0000um3q723unmpt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/21/函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">函数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/DOM/">DOM</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/21/函数/">函数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/20/JS数组/">JS数组</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/13/原型与原型链/">原型与原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/13/js里的数据类型转换/">js里的数据类型转换</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 莫正红<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
