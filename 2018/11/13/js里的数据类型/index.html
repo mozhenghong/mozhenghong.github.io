@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="mozhenghong">
 <meta property="og:description" content="数据类型(7种) 数值(Number)   javaScript内部所有数字都是以64位浮点数形式存储，即便整数也是如此。 数值的进制 十进制： 没有前导0的数值，1+.1=1.1;1+1.1=1.1 八进值：有前缀0o或0O的数值 十六进制：有前缀0x或0X的数值 二进制：有前缀0b或0B的数值   特殊数值–NaN 非数字(not a number),主要出现在将字符串解析成数字出错的场合，数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-13T04:03:09.385Z">
+<meta property="og:updated_time" content="2018-11-26T03:19:26.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js里的数据类型">
 <meta name="twitter:description" content="数据类型(7种) 数值(Number)   javaScript内部所有数字都是以64位浮点数形式存储，即便整数也是如此。 数值的进制 十进制： 没有前导0的数值，1+.1=1.1;1+1.1=1.1 八进值：有前缀0o或0O的数值 十六进制：有前缀0x或0X的数值 二进制：有前缀0b或0B的数值   特殊数值–NaN 非数字(not a number),主要出现在将字符串解析成数字出错的场合，数">
@@ -208,9 +208,14 @@
 </li>
 </ul>
 </li>
-<li><p>属性的遍历：for…in循环</p>
+<li><p>遍历：for…in循环</p>
 <ul>
-<li>for…in循环用来遍历一个对象的全部属性，跳过不可遍历的属性，不仅遍历自身属性，还遍历继承的属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    name:&apos;xxx&apos;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br><span class="line">  for(var key in person)&#123;</span><br><span class="line">      console.log(key)</span><br><span class="line">  &#125;</span><br><span class="line">  //name age</span><br></pre></td></tr></table></figure>
+<li><p>for…in循环用来遍历一个对象的全部属性，跳过不可遍历的属性，不仅遍历自身属性，还遍历继承的属性,把原型链上可枚举的属性遍历出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    name:&apos;xxx&apos;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br><span class="line">  for(var key in person)&#123;</span><br><span class="line">      console.log(key)</span><br><span class="line">  &#125;</span><br><span class="line">  //name age</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Object.keys(obj)/Object.values(obj)<br><br>只遍历自身的可枚举属性</li>
+<li>Object.getOwnPropertyDescriptor()<br><br>遍历自身的可枚举属性+不可枚举属性</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -226,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjoxojt7a000q783qrru0nnkc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjoxqv1y4000mio3q67sxo0e2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +293,7 @@
           </li>
         
           <li>
-            <a href="/2018/11/21/函数/">函数</a>
+            <a href="/2018/11/21/JS函数/">函数</a>
           </li>
         
           <li>

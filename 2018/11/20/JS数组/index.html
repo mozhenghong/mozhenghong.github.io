@@ -19,6 +19,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-132d603817f9982d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-7811060a8850d0c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-e8c7cd125f9b2e37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-db503fb1228e3fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-f78236beb364d19c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-fba21a8564d3f1bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-348394b630333463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -35,7 +36,9 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-af07bc56cb96214a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-01b83341271af7a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-d1fdae4c086933d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-26T02:11:44.266Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-c112cf364a6afb9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9617841-795c795e9cc8e0df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-26T02:50:20.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS数组">
 <meta name="twitter:description" content="Array用法 基本用法 Array(3)//{length:3} ,3表示length    Array(3,3) // [3,3] ,第一个3并不表示length了    构造函数   基本类型==&amp;gt;Number、String、Boolean 不加new，返回基本类型 加new，返回对象      复杂类型==&amp;gt;Array、Function 不加new，返回对象 加new，也返回对">
@@ -151,7 +154,11 @@
 </ol>
 <p>forEach() 方法对数组的每个元素执行一次提供的函数。返回值为undefined<br><br>forEach()参数必须为一个函数<br><br>函数必须有三个参数，一个为数组当前项的值（value），一个为数组当前项的索引（key），一个为数组对象本身</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9617841-e8c7cd125f9b2e37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<ol start="2">
+<ul>
+<li>for…of可以遍历数组,得到value</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-db503fb1228e3fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ol>
 <li>Array.prototype.sort</li>
 </ol>
 <p>sort() 方法对数组的元素进行排序，并返回数组。默认排序顺序是根据字符串Unicode码点。<br></p>
@@ -188,14 +195,20 @@
 <p>reduce() 方法对累计器和数组中的每个元素（从左到右）应用一个函数，将其简化为单个值。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9617841-216d455abd6bd302.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <ol start="9">
-<li>Array.prototype.push</li>
+<li>Array.prototype.push/Array.prototype.unshift()</li>
 </ol>
-<p>push() 方法将一个或多个元素添加到数组的末尾，并<strong>返回该数组的新长度</strong>。</p>
+<ul>
+<li>push() 方法将一个或多个元素添加到数组的末尾，并<strong>返回该数组的新长度</strong>。</li>
+<li>unshift()将一个或多个元素添加到数组的开头，并返回该数组的新长度。</li>
+</ul>
 <p><img src="https://upload-images.jianshu.io/upload_images/9617841-8b13f339c0ecc379.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <ol start="10">
-<li>Array.prototype.pop</li>
+<li>Array.prototype.pop/Array.prototype.shift()</li>
 </ol>
-<p>pop()方法从数组中删除最后一个元素，并<strong>返回该元素的值</strong>。此方法更改数组的长度。</p>
+<ul>
+<li>pop()方法从数组中删除最后一个元素，并<strong>返回该元素的值</strong>。此方法更改数组的长度。</li>
+<li>shift() 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。</li>
+</ul>
 <p><img src="https://upload-images.jianshu.io/upload_images/9617841-b83fa79fa9aab7dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <ol start="11">
 <li>Array.prototype.includes()</li>
@@ -248,11 +261,25 @@
 <li>判断数组里是否所有元素都满足回调。</li>
 </ul>
 <p><img src="https://upload-images.jianshu.io/upload_images/9617841-d1fdae4c086933d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ol start="18">
+<li>Array.prototype.slice()</li>
+</ol>
+<ul>
+<li>截取数组的一部分,如下[2,3)</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-c112cf364a6afb9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ol start="19">
+<li>Array.prototype.splice()</li>
+</ol>
+<ul>
+<li>splice()方法通过删除现有元素和/或添加新元素来修改数组,返回被删除的内容。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-795c795e9cc8e0df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjoxojt5j0002783qn29nd6t7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjoxqv1xg0007io3qykq41jfb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,7 +288,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/11/21/函数/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/21/JS函数/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -314,7 +341,7 @@
           </li>
         
           <li>
-            <a href="/2018/11/21/函数/">函数</a>
+            <a href="/2018/11/21/JS函数/">函数</a>
           </li>
         
           <li>
