@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>for循环中的闭包 | mozhenghong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题   以下代码中原本是想每次点击对应的目标弹出对应的数字下标0-9，但实际上无论点击哪个目标都会弹出数字10.1234567891011121314151617181920212223242526272829303132&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="for循环中的闭包">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/for循环中的闭包/index.html">
+<meta property="og:site_name" content="mozhenghong">
+<meta property="og:description" content="问题   以下代码中原本是想每次点击对应的目标弹出对应的数字下标0-9，但实际上无论点击哪个目标都会弹出数字10.1234567891011121314151617181920212223242526272829303132&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-27T06:52:57.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="for循环中的闭包">
+<meta name="twitter:description" content="问题   以下代码中原本是想每次点击对应的目标弹出对应的数字下标0-9，但实际上无论点击哪个目标都会弹出数字10.1234567891011121314151617181920212223242526272829303132&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">mozhenghong</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-for循环中的闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/27/for循环中的闭包/" class="article-date">
+  <time datetime="2018-11-27T06:07:29.000Z" itemprop="datePublished">2018-11-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      for循环中的闭包
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>问题</li>
+</ol>
+<ul>
+<li>以下代码中原本是想每次点击对应的目标弹出对应的数字下标0-9，但实际上无论点击哪个目标都会弹出数字10.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;0&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;1&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;2&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;3&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;4&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;5&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;6&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;7&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;8&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;9&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">       var childArray= document.getElementsByClassName(&apos;child&apos;)</span><br><span class="line">       for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">           childArray[i].onclick=function()&#123;</span><br><span class="line">               console.log(i)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<font color="blue">上面代码中，当执行onclick事件时循环已经结束了，这时打印的i是外部定义的i，此时i=10（变量i和这个函数形成了闭包）</font>
+
+<ol start="2">
+<li><p>解决方法</p>
+<ul>
+<li><p>方案1：将var改为let</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let childArray = document.getElementsByClassName(&apos;child&apos;);</span><br><span class="line">    for (let i = 0; i &lt; childArray.length; i++) &#123;</span><br><span class="line">        childArray[i].onclick = function () &#123;</span><br><span class="line">            console.log(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>let定义的变量作用域为块级作用域，只在{}中有效。</p>
+</li>
+<li><p>方案2：增加闭包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">    childArray[i].onclick = function () &#123;</span><br><span class="line">                var copy = i;</span><br><span class="line">                return function () &#123;</span><br><span class="line">                    console.log(copy);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方案3：立即执行函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">(function () &#123;</span><br><span class="line">            var copy = i;</span><br><span class="line">            childArray[i].onclick = function () &#123;</span><br><span class="line">                console.log(copy);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码每执行一次，就会产生一个对象存储copy和onclick函数</p>
+</li>
+<li>方案4:与方案3相似<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">    (function (arg) &#123;</span><br><span class="line">    childArray[i].onclick = function () &#123;</span><br><span class="line">        console.log(arg);</span><br><span class="line">    &#125;;</span><br><span class="line">    &#125;)(i);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/27/for循环中的闭包/" data-id="cjozdxyue000g8r3q7gpj8xgj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/22/DOM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DOM</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/27/for循环中的闭包/">for循环中的闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/DOM/">DOM</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/21/JS函数/">函数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/20/JS数组/">JS数组</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/13/原型与原型链/">原型与原型链</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 莫正红<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
