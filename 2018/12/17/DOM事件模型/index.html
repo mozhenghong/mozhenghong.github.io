@@ -7,14 +7,17 @@
   
   <title>DOM事件模型 | mozhenghong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="onclick和addEventListener 关于onclick  12345function print()&amp;#123;&amp;#125;&amp;lt;button id=&amp;quot;x&amp;quot; onclick=&amp;quot;print&amp;quot;&amp;gt;A&amp;lt;/button&amp;gt;//错误&amp;lt;button id=&amp;quot;y&amp;quot; onclick=&amp;quot;print()&amp;quot">
+<meta property="og:type" content="article">
 <meta property="og:title" content="DOM事件模型">
 <meta property="og:url" content="http://yoursite.com/2018/12/17/DOM事件模型/index.html">
 <meta property="og:site_name" content="mozhenghong">
+<meta property="og:description" content="onclick和addEventListener 关于onclick  12345function print()&amp;#123;&amp;#125;&amp;lt;button id=&amp;quot;x&amp;quot; onclick=&amp;quot;print&amp;quot;&amp;gt;A&amp;lt;/button&amp;gt;//错误&amp;lt;button id=&amp;quot;y&amp;quot; onclick=&amp;quot;print()&amp;quot">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-17T15:53:10.575Z">
+<meta property="og:updated_time" content="2018-12-18T05:54:23.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM事件模型">
+<meta name="twitter:description" content="onclick和addEventListener 关于onclick  12345function print()&amp;#123;&amp;#125;&amp;lt;button id=&amp;quot;x&amp;quot; onclick=&amp;quot;print&amp;quot;&amp;gt;A&amp;lt;/button&amp;gt;//错误&amp;lt;button id=&amp;quot;y&amp;quot; onclick=&amp;quot;print()&amp;quot">
   
     <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
   
@@ -83,11 +86,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="onclick和addEventListener"><a href="#onclick和addEventListener" class="headerlink" title="onclick和addEventListener"></a>onclick和addEventListener</h3><ol>
+<li>关于onclick</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function print()&#123;&#125;</span><br><span class="line">&lt;button id=&quot;x&quot; onclick=&quot;print&quot;&gt;A&lt;/button&gt;//错误</span><br><span class="line">&lt;button id=&quot;y&quot; onclick=&quot;print()&quot;&gt;B&lt;/button&gt;//正确</span><br><span class="line">x.onclick = print//正确</span><br><span class="line">x.onclick = print()//错误</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不能同时添加多个onclick事件，后面添加的会覆盖前面添加的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x.onclick = function()&#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">&#125;</span><br><span class="line">x.onclick = function()&#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">&#125;</span><br><span class="line">//最终点击ｘ时会打印出２，因为后一次会覆盖前一次</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>关于addEventListener</li>
+</ol>
+<ul>
+<li>后一次添加的事件不会覆盖前一次的，会加到前一后面，也就是说可以给同一元素添加多个click事件,每添加一个, 都会进入click的队列里, 然后依次执行,每种事件有各自不同的队列</li>
+<li>removeEventListener<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x.addEventListener(&apos;click&apos;,function()&#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">&#125;)</span><br><span class="line">x.addEventListener(&apos;click&apos;,function()&#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">&#125;)</span><br><span class="line">//会依次打印出１和２</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="事件捕获和事件冒泡"><a href="#事件捕获和事件冒泡" class="headerlink" title="事件捕获和事件冒泡"></a>事件捕获和事件冒泡</h2><ul>
+<li>有以下一段html内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;grand&quot;&gt;</span><br><span class="line">爷爷</span><br><span class="line">    &lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    爸爸</span><br><span class="line">        &lt;div id=&quot;son&quot;&gt;</span><br><span class="line">        儿子</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">//script</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    grand.addEventListener(&apos;click&apos;,function f1()&#123;&#125;,第三个参数)</span><br><span class="line">    parent.addEventListener(&apos;click&apos;,function f2()&#123;&#125;,第三个参数)</span><br><span class="line">    son.addEventListener(&apos;click&apos;,function f3()&#123;&#125;,第三个参数)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当点击儿子时，f1,f2,f3都会被调用</li>
+<li>若第三个参数为true，则调用顺序为f1,f2,f3 ==&gt;事件捕获</li>
+<li>若第三个参数不填或者第三个　参数为五个falsy值中的一个，则调用顺序为f3,f2,f1 ==&gt;事件冒泡</li>
+<li>一般情况下为先捕获再冒泡</li>
+<li>特例：若儿子有两个click事件，一个为true(捕获)，一个为false(冒泡)，当点击儿子时，儿子上的函数执行顺序会按书写顺序执行，并不会再遵循先捕获再冒泡的规则。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">son.addEventListener(&apos;click&apos;,function f3()&#123;&#125;)</span><br><span class="line">son.addEventListener(&apos;click&apos;,function f4()&#123;&#125;,true)</span><br><span class="line">son.addEventListener(&apos;click&apos;,function f5()&#123;&#125;,true)</span><br><span class="line">点击son时，会依次执行f3,f4,f5</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjpt73j9i00023z3qw3ko2lws" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjptc3gnd0004e03qfyxxrbok" class="article-share-link">Share</a>
       
       
     </footer>
