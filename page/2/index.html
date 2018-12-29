@@ -62,6 +62,183 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js里的数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/13/js里的数据类型/" class="article-date">
+  <time datetime="2018-11-13T02:19:41.000Z" itemprop="datePublished">2018-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/js里的数据类型/">js里的数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据类型-7种"><a href="#数据类型-7种" class="headerlink" title="数据类型(7种)"></a>数据类型(7种)</h2><ol>
+<li>数值(Number)</li>
+</ol>
+<ul>
+<li>javaScript内部所有数字都是以<font color="red">64位浮点数</font>形式存储，即便整数也是如此。</li>
+<li>数值的进制<ul>
+<li>十进制： 没有前导0的数值，1+.1=1.1;1+1.1=1.1</li>
+<li>八进值：有前缀0o或0O的数值</li>
+<li>十六进制：有前缀0x或0X的数值</li>
+<li>二进制：有前缀0b或0B的数值</li>
+</ul>
+</li>
+<li>特殊数值–NaN<ul>
+<li>非数字(not a number),主要出现在将字符串解析成数字出错的场合，数据类型依然是Number</li>
+<li>0除以0会得到NaN</li>
+<li>NaN不等于任何值，包括它本身</li>
+<li>NaN与任何值（包括它本身）的运算，得到的都是NaN</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>字符串(string)</li>
+</ol>
+<ul>
+<li>‘’（空字符串）和‘ ’（空格字符串）不一样，空字符串长度为0，空格字符串长度为1</li>
+<li>若要在单引号内部使用单引号，就必须在内部的单引号前面加反斜杠\用来转义<ul>
+<li><code>\&#39;</code>:单引号</li>
+<li><code>\n</code>:回车</li>
+<li><code>\t</code>:制表符 </li>
+<li><code>\\</code>:一个反斜杠符号</li>
+</ul>
+</li>
+<li>多行字符串的书写<ul>
+<li>‘1234’+<br><br>‘5678’</li>
+</ul>
+</li>
+<li>length属性</li>
+</ul>
+<p>返回字符串的长度，该属性是无法改变的</p>
+<ul>
+<li>base64转码<ul>
+<li>btoa（）：任意值转为base64编码</li>
+<li>atob（）：base64编码转为原来的值</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>布尔值(Boolean)</li>
+</ol>
+<ul>
+<li>a&amp;&amp;b:a、b同时为真才为真</li>
+<li>a||b：a、b同时为假才为假</li>
+<li>如果JavaScript预期某个位置应该是布尔值，会将该位置上现有的值自动转化为布尔值</li>
+</ul>
+<ol start="4">
+<li><p>symbol(一般不用)</p>
+</li>
+<li><p>null</p>
+</li>
+</ol>
+<ul>
+<li>表示空值，即该处的值现在为空</li>
+</ul>
+<ol start="6">
+<li>undefined</li>
+</ol>
+<ul>
+<li>表示未定义</li>
+<li>区别：<ul>
+<li>变量没有赋值，为undefined</li>
+<li>object不想给值，就给null，非对象不想给值就给undefined</li>
+<li>null表示空对象，undefined表示非空对象</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>对象(object)</li>
+</ol>
+<ul>
+<li>对象是一种键值对的集合，是一种<font color="red">无序的符合数据集合</font></li>
+<li><font color="blue">对象的所有键名都是字符串</font>，如果键名不符合标识名的条件，且不是数字，必须加上引号，否则会报错<ul>
+<li>第一个字符必须是一个字母、下划线（_）或一个美元符号（$）</li>
+<li>其他字符可以是字母、数字、下划线或者美元符号</li>
+<li>中文是合法的标识符，可以用作变量名。</li>
+</ul>
+</li>
+<li><p>空字符串也可以为键名</p>
+</li>
+<li><p>对象的引用</p>
+<ul>
+<li><p>obj[‘keyname’],必须加‘’<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var name=&apos;x&apos;</span><br><span class="line">var obj=&#123;</span><br><span class="line">    name:&apos;mm&apos;</span><br><span class="line">&#125;</span><br><span class="line">obj[name]==&gt;obj[&apos;x&apos;]==&gt;undefined</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>obj.keyname(前提是keyname符合标识符命名规则)</p>
+</li>
+<li>数值键名必须使用方括号运算符引用</li>
+</ul>
+</li>
+<li><p>属性的赋值</p>
+</li>
+</ul>
+<p>点运算符和方括号运算符不仅可以读取值，也可以赋值</p>
+<ul>
+<li>属性的查看</li>
+</ul>
+<p>查看一个属性本身的所有方法，可以使用<code>Object.keys(obj)</code></p>
+<ul>
+<li><p>属性的删除</p>
+<ul>
+<li>delete命令用于删除对象的属性，删除成功后返回true:<br><br><code>delete  obj[&#39;keyname&#39;]</code>或<code>delete obj.keyname</code><br><br><em>delete把值和value都变成undefinde,而obj.keyundefined=undefined只是把value变成undefined，键名依然存在</em></li>
+<li>删除一个不存在的属性，delete不会报错，并且返回true，只有当该属性存在，且不得删除时，才会返回false</li>
+<li>delete命令只能删除对象本身的属性，无法删除继承的属性</li>
+</ul>
+</li>
+<li><p>属性是否存在： in运算符</p>
+<ul>
+<li>in运算符用于检查对象是否包含某个属性（检查啊的是键名不是键值），如果包含就返回true，不包含返回false<br><br><code>‘keyname’ in obj</code><ul>
+<li>in 运算符不能识别哪些对象是自身的 哪些是继承的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>遍历：for…in循环</p>
+<ul>
+<li><p>for…in循环用来遍历一个对象的全部属性，跳过不可遍历的属性，不仅遍历自身属性，还遍历继承的属性,把原型链上可枚举的属性遍历出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    name:&apos;xxx&apos;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br><span class="line">  for(var key in person)&#123;</span><br><span class="line">      console.log(key)</span><br><span class="line">  &#125;</span><br><span class="line">  //name age</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Object.keys(obj)/Object.values(obj)<br><br>只遍历自身的可枚举属性</li>
+<li>Object.getOwnPropertyDescriptor()<br><br>遍历自身的可枚举属性+不可枚举属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>typeof运算符</p>
+</li>
+</ul>
+<p>返回一个值的数据类型,特殊的只有两种<br></p>
+<ul>
+<li><code>typeof null</code> //‘object’</li>
+<li><code>typeof function</code> //‘function’</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjq92fh5u000kf33qop638u36" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-scss基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/05/scss基础/" class="article-date">
@@ -181,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjptrq8kz000neh3qhlqanwqi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjq92fh5x000mf33qe5b2nwlo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -253,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjptrq8jw0000eh3qsocmfkcu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjq92fh510002f33qa3u624o7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -308,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjptrq8kl000beh3qxvku7x2g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjq92fh5r000if33qjfxax4cp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjptrq8l7000teh3qkha91ujd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjq92fh62000qf33qkzthfuao" class="article-share-link">Share</a>
       
       
     </footer>
@@ -457,7 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/算法初级/" data-id="cjptrq8l8000ueh3qgp901gg0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/算法初级/" data-id="cjq92fh67000uf33q5mi13u5u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -535,7 +712,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-BFC/" data-id="cjptrq8kg0008eh3qls1xyjbo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-BFC/" data-id="cjq92fh5e000af33q86sjwgdc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -620,7 +797,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjptrq8k30001eh3qetr9otpj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjq92fh590007f33qucrbehpq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -740,7 +917,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjptrq8kt000heh3q335gkhjn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjq92fh68000vf33qhtu70g7e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -792,67 +969,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjptrq8kr000feh3qsr8slghv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-icon全解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/30/css-icon全解/" class="article-date">
-  <time datetime="2018-10-30T03:23:50.000Z" itemprop="datePublished">2018-10-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/30/css-icon全解/">css-icon全解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Photoshop"><a href="#Photoshop" class="headerlink" title="Photoshop"></a>Photoshop</h4><ol>
-<li>拿到的设计图为psd格式要转换成png格式的单个图标</li>
-</ol>
-<p>在图上右键==&gt;点击要选的图层，得到图层==&gt;在图层上右键，复制图层（duplicate layer）==&gt;image ==&gt;trim(裁剪)==&gt;image==&gt;canvas size(修改画布大小)==&gt;file==&gt;export==&gt;quick export png(导出png格式)</p>
-<ol start="2">
-<li>拿到png格式设计图</li>
-</ol>
-<p>用Photoshop打开png==&gt;选中其中一个图标==&gt;image==&gt;crop(剪切)==&gt;选择魔法棒工具==&gt;选中要选择的区域==&gt;右键==&gt;select inverse==&gt;按delete键删除==&gt;右键==&gt;decelect==&gt;image==&gt;trim==&gt;image==&gt;canvas size(修改画布大小)==&gt;file==&gt;export==&gt;quick export png(导出png格式)</p>
-<h2 id="icon的各种做法"><a href="#icon的各种做法" class="headerlink" title="icon的各种做法"></a>icon的各种做法</h2><ol>
-<li><code>&lt;img&gt;</code>法</li>
-</ol>
-<p>可自适应宽高，改变宽，高也会自动改变，会保持原本的默认比例。</p>
-<ol start="2">
-<li><p><code>&lt;background&gt;</code>法</p>
-</li>
-<li><p>SVG 法（推荐）</p>
-</li>
-</ol>
-<p>（1）在<a href="http://iconfont.cn" target="_blank" rel="noopener">iconfont网站</a>搜索想要的矢量图，加入购物车</p>
-<p>（2）点击添加至项目</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14473072-fc9ac8b16ef187d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>(3）点击symbol，将下方代码复制到script的src中</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14473072-60d921b2cd9d245c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>(4)点击使用帮助，然后按照symbol引用下的要求做即可。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-icon全解/" data-id="cjptrq8kn000ceh3q9lu29u74" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjq92fh5l000df33q0cglqfmv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -898,6 +1015,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/">HTTP--cookie+session+LocalStorage+cache-control</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/17/DOM事件模型/">DOM事件模型</a>
           </li>
         
@@ -911,10 +1032,6 @@
         
           <li>
             <a href="/2018/11/27/for循环中的闭包/">for循环中的闭包</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/DOM/">DOM</a>
           </li>
         
       </ul>
