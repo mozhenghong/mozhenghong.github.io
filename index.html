@@ -62,6 +62,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6-箭头函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/10/ES6-箭头函数/" class="article-date">
+  <time datetime="2019-01-10T08:12:20.000Z" itemprop="datePublished">2019-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/10/ES6-箭头函数/">ES6-箭头函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ol>
+<li>当有多个参数时</li>
+</ol>
+<p><code>(参数１，参数２，...参数n)=&gt;{函数体}</code></p>
+<ol start="2">
+<li>当只有一个return时,{}可以省略</li>
+</ol>
+<p><code>(参数１，参数２，...参数n)=&gt;表达式</code></p>
+<ol start="3">
+<li>当只有一个参数时，（）可以省略</li>
+</ol>
+<p><code>参数=&gt;{函数体}</code></p>
+<ol start="4">
+<li>当没有参数时，只写一个（）即可</li>
+</ol>
+<p><code>()=&gt;{函数体}</code></p>
+<p>###　箭头函数不绑定this</p>
+<ul>
+<li>箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。</li>
+<li><p>传统函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line">  // Person() 构造函数定义 `this`作为它自己的实例.</span><br><span class="line">  this.age = 0;</span><br><span class="line"></span><br><span class="line">  setInterval(function growUp() &#123;</span><br><span class="line">    // 在非严格模式, growUp()函数定义 `this`作为全局对象, </span><br><span class="line">    // 与在 Person()构造函数中定义的 `this`并不相同.</span><br><span class="line">    this.age++;</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>箭头函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line">  this.age = 0;</span><br><span class="line"></span><br><span class="line">  setInterval(() =&gt; &#123;</span><br><span class="line">    this.age++; // |this| 正确地指向person 对象</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="通过-call-或-apply-调用"><a href="#通过-call-或-apply-调用" class="headerlink" title="通过 call 或 apply 调用"></a>通过 call 或 apply 调用</h3><ul>
+<li>由于 箭头函数没有自己的this指针，通过 call() 或 apply() 方法调用一个函数时，只能传递参数（不能绑定this)，他们的第一个参数会被忽略。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var adder1 = &#123;</span><br><span class="line">  base : 1,</span><br><span class="line">    </span><br><span class="line">  add : function(a) &#123;</span><br><span class="line">    var f = v =&gt; v + this.base;</span><br><span class="line">    return f(a);</span><br><span class="line">  &#125;,</span><br><span class="line">adder1.add(1) //2</span><br><span class="line"></span><br><span class="line">var adder2 = &#123;</span><br><span class="line">  add : function(a) &#123;</span><br><span class="line">    var f = v =&gt; v + this.base;</span><br><span class="line">    var b=&#123;base:1&#125;</span><br><span class="line">    return f.call(b,a);</span><br><span class="line">  &#125;,</span><br><span class="line">adder2.add(1,3) //1会被忽略，a=3,返回4</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/10/ES6-箭头函数/" data-id="cjqqdhsuv000adm3q0zs3l9y1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ES6-作用域" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/10/ES6-作用域/" class="article-date">
@@ -133,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-作用域/" data-id="cjqqc0mwf0002e43q1zv1p2z2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-作用域/" data-id="cjqqdhsum0003dm3qv74z7f7p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/" data-id="cjqqc0mwj0004e43qzl1knaol" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/" data-id="cjqqdhsut0008dm3qx7xgecke" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjqqc0mwh0003e43q3zpkuftu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjqqdhsuk0002dm3quur0syzl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -423,7 +488,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/JSONP/" data-id="cjqqc0mwp0008e43q5yez4i1q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/JSONP/" data-id="cjqqdhsuu0009dm3qz8gh09sj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -518,7 +583,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/AJAX/" data-id="cjqqc0mwl0005e43q1dltwuml" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/AJAX/" data-id="cjqqdhsup0005dm3q7esl0kdx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -581,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/for循环中的闭包/" data-id="cjqqc0mxl000re43q6fbo7hu6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/for循环中的闭包/" data-id="cjqqdhsv9000ldm3q15q1rlgh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -772,7 +837,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/DOM/" data-id="cjqqc0mwc0001e43qmzqejfrx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/DOM/" data-id="cjqqdhsun0004dm3qsxfh4fve" class="article-share-link">Share</a>
       
       
     </footer>
@@ -869,7 +934,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/21/JS函数/" data-id="cjqqc0mwr0009e43qd2t5vd0y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/21/JS函数/" data-id="cjqqdhsux000bdm3qnj4tp7j7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1069,100 +1134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjqqc0mx5000ge43qffmdhu02" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-原型与原型链" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/13/原型与原型链/" class="article-date">
-  <time datetime="2018-11-13T14:18:19.000Z" itemprop="datePublished">2018-11-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/13/原型与原型链/">原型与原型链</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><ul>
-<li>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的）</li>
-<li>window 就是一个哈希表，有很多属性。</li>
-<li>window 的属性就是全局变量。这些全局变量分为两种：</li>
-</ul>
-<ol>
-<li><p>ECMAScript 规定的</p>
-<ul>
-<li>global.parseInt()</li>
-<li>global.parseFloat()</li>
-<li>global.Number()</li>
-<li>global.String()</li>
-<li>global.Boolean()</li>
-<li>global.Object()</li>
-</ul>
-</li>
-<li><p>是浏览器自己加的属性</p>
-<ul>
-<li>window.alert()弹框提示</li>
-<li>window.prompt()用户填写</li>
-<li>window.comfirm()确认</li>
-<li>window.console.log()开发者而工具打印</li>
-<li>window.console.dir</li>
-<li>window.document</li>
-<li>window.document.createElement</li>
-<li>window.document.getElementById</li>
-</ul>
-</li>
-</ol>
-<h2 id="全局函数"><a href="#全局函数" class="headerlink" title="全局函数"></a>全局函数</h2><ol>
-<li>Number<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var n = new Number(1) 创建一个 Number 对象</span><br><span class="line">1 与 new Number(1) 的区别是什么？</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2018/11/13/5beae6fad2c5e.png" alt=""></p>
-<ol start="2">
-<li>String<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = new String(&apos;hello&apos;) 创建一个 String 对象</span><br><span class="line">&apos;hello&apos; 与 new String(&apos;hello&apos;) 的区别是什么？</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/9617841-14be71b1a6d408f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<ol start="3">
-<li>Boolean<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var b = new Boolean(false) 创建一个 Boolean 对象</span><br><span class="line">false 与 new Boolean(false) 的区别是什么？</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2018/11/13/5beae746e3a34.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> if(b)&#123;</span><br><span class="line">     console.log(xxx)</span><br><span class="line">&#125;</span><br><span class="line">会打印出xxx，因为b为一个对象，并不是是falsy值了</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>Object<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var o1 = &#123;&#125;</span><br><span class="line">var o2 = new Object()</span><br><span class="line">o1 和 o2 没区别，但是 o1 === o2 是 false ，因为存储在 Stack(栈内存) 中的地址不同</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="公用的属性-原型"><a href="#公用的属性-原型" class="headerlink" title="公用的属性(原型)"></a>公用的属性(原型)</h2><ul>
-<li>把 toString 和 valueOf 放在一个对象里（公用属性组成的对象）,<br>然后让每一个对象的 <code>__proto__</code>存储这个「公用属性组成的对象」的地址。</li>
-</ul>
-<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><ul>
-<li>var 对象=new 函数（）<br><font color="blue">对象.<code>__proto__</code>===函数.prototype</font>
-
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 推论</span><br><span class="line">var number = new Number()</span><br><span class="line">number.__proto__ = Number.prototype</span><br><span class="line">Number.__proto__ = Function.prototype // 因为 Number 是 Function 的实例</span><br><span class="line"></span><br><span class="line">var object = new Object()</span><br><span class="line">object.__proto__ = Object.prototype</span><br><span class="line">Object.__proto__ = Function.prototype // 因为 Object 是 Function 的实例</span><br><span class="line"></span><br><span class="line">var function = new Function()</span><br><span class="line">function.__proto__ = Function.prototype</span><br><span class="line">Function.__proto__ == Function.prototye // 因为 Function 是 Function 的实例！</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/原型与原型链/" data-id="cjqqc0mxj000pe43q5ljau1oz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjqqdhsv5000hdm3qm84y6vce" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1208,6 +1180,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/10/ES6-箭头函数/">ES6-箭头函数</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/10/ES6-作用域/">ES6-作用域</a>
           </li>
         
@@ -1221,10 +1197,6 @@
         
           <li>
             <a href="/2018/12/17/JSONP/">JSONP</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/17/AJAX/">AJAX</a>
           </li>
         
       </ul>
