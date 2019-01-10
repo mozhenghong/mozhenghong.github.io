@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6-作用域 | mozhenghong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="块级作用域 通过var声明的变量没有块级作用域，var会变量提升，只有函数才能包住var  例如：12345var a = 1;&amp;#123;    var a = 2&amp;#125;console.log(a)//2    let和const有块级作用域  例如：12345let a = 1;&amp;#123;    let a = 2;&amp;#125;console.log(a)//1     1234567">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6-作用域">
+<meta property="og:url" content="http://yoursite.com/2019/01/10/ES6-作用域/index.html">
+<meta property="og:site_name" content="mozhenghong">
+<meta property="og:description" content="块级作用域 通过var声明的变量没有块级作用域，var会变量提升，只有函数才能包住var  例如：12345var a = 1;&amp;#123;    var a = 2&amp;#125;console.log(a)//2    let和const有块级作用域  例如：12345let a = 1;&amp;#123;    let a = 2;&amp;#125;console.log(a)//1     1234567">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-10T08:08:47.983Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6-作用域">
+<meta name="twitter:description" content="块级作用域 通过var声明的变量没有块级作用域，var会变量提升，只有函数才能包住var  例如：12345var a = 1;&amp;#123;    var a = 2&amp;#125;console.log(a)//2    let和const有块级作用域  例如：12345let a = 1;&amp;#123;    let a = 2;&amp;#125;console.log(a)//1     1234567">
+  
+    <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">mozhenghong</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ES6-作用域" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/10/ES6-作用域/" class="article-date">
+  <time datetime="2019-01-10T03:27:44.000Z" itemprop="datePublished">2019-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6-作用域
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h2><ul>
+<li><p>通过var声明的变量没有块级作用域，var会变量提升，只有函数才能包住var</p>
+<ul>
+<li>例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">&#123;</span><br><span class="line">    var a = 2</span><br><span class="line">&#125;</span><br><span class="line">console.log(a)//2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>let和const有块级作用域</p>
+<ul>
+<li>例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let a = 1;</span><br><span class="line">&#123;</span><br><span class="line">    let a = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(a)//1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const a = 1;</span><br><span class="line">&#123;</span><br><span class="line">    const a = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(a)//1</span><br><span class="line"></span><br><span class="line">注意：作用域里的常量声明 const a = 2 并不会抛出SyntaxError: Identifier &apos;a&apos; has already been declared这样的语法错误，因为这是一个新的作用域。</span><br></pre></td></tr></table></figure>
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><ul>
+<li>特点<ul>
+<li>let的作用域在最近的{}之间，let不会变量提升</li>
+<li>如果在let a　之前使用a，那么报错</li>
+<li>如果重复let a，那么报错。</li>
+</ul>
+</li>
+<li>let的暂存死区<ul>
+<li>在同一个作用域中，用let重复定义一个变量，将引起TypeError</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(x)&#123;</span><br><span class="line">    let foo;</span><br><span class="line">    let foo; // TypeError thrown.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 ECMAScript 2015(ES6) 中，let 绑定不受变量提升的约束，这意味着 let  声明不会被提升到当前执行上下文的顶部，在块中的变量初始化之前，引用它将会导致 ReferenceError（而使用 var 声明变量则恰恰相反，该变量的值是 undefined ）。这个变量处于从块开始到 let 初始化处理的”暂存死区“之中。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function fn()&#123;</span><br><span class="line">    console.log(a);  //undefined</span><br><span class="line">    console.log(b); //ReferenceError: b is not defined</span><br><span class="line">    var a = 1;</span><br><span class="line">    let b = 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><ul>
+<li><p>特点</p>
+<ul>
+<li>const的作用域在最近的{}之间</li>
+<li>如果在const a　之前使用a，那么报错</li>
+<li>如果重复const a，那么报错</li>
+<li>const只有一次赋值机会，声明变量时必须赋值，赋值后将无法改变。</li>
+</ul>
+</li>
+<li><p>注意</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const a = 7;</span><br><span class="line"></span><br><span class="line">//(1)</span><br><span class="line">a = 20; //再次赋值会报错</span><br><span class="line"></span><br><span class="line">//(2)</span><br><span class="line">const a = 20; // 尝试再次声明会报错</span><br><span class="line">var a =20;</span><br><span class="line">let a =20;//不管用什么声明都会报错</span><br><span class="line"></span><br><span class="line">//(3)</span><br><span class="line">if(a===7)&#123;</span><br><span class="line">    let a =20 //这个a只在&#123;&#125;这个块级作用域中</span><br><span class="line">    console.log(a) //20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const obj = &#123;name: &apos;momo&apos;&#125;</span><br><span class="line">obj = &#123;NAME:&apos;MOMO&apos;&#125; //报错，不可以再次赋值</span><br><span class="line">obj.name = &apos;tom&apos; //成功！！</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<font color="red">const定义变量之后，我们不可以修改stack上的内容，但是可以修改heap上的内容</font>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/10/ES6-作用域/" data-id="cjqqc0mwf0002e43q1zv1p2z2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTTP--cookie+session+LocalStorage+cache-control</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/10/ES6-作用域/">ES6-作用域</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/">HTTP--cookie+session+LocalStorage+cache-control</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/17/DOM事件模型/">DOM事件模型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/17/JSONP/">JSONP</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/17/AJAX/">AJAX</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 莫正红<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
