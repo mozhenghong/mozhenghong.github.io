@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6-对象初始化 | mozhenghong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="产生一个新对象（对象初始化） var a = new Object()产生了一个空对象，有proto属性指向object  var b = Object,create(null),产生了一个空对象，但是没有proto  var c = Object.create(Object,prototype)产生一个空对象，有proto  var d = {},产生一个空对象，有proto   属性定义123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6-对象初始化">
+<meta property="og:url" content="http://yoursite.com/2019/01/10/ES6-对象初始化/index.html">
+<meta property="og:site_name" content="mozhenghong">
+<meta property="og:description" content="产生一个新对象（对象初始化） var a = new Object()产生了一个空对象，有proto属性指向object  var b = Object,create(null),产生了一个空对象，但是没有proto  var c = Object.create(Object,prototype)产生一个空对象，有proto  var d = {},产生一个空对象，有proto   属性定义123">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-10T16:29:35.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6-对象初始化">
+<meta name="twitter:description" content="产生一个新对象（对象初始化） var a = new Object()产生了一个空对象，有proto属性指向object  var b = Object,create(null),产生了一个空对象，但是没有proto  var c = Object.create(Object,prototype)产生一个空对象，有proto  var d = {},产生一个空对象，有proto   属性定义123">
+  
+    <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">mozhenghong</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ES6-对象初始化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/10/ES6-对象初始化/" class="article-date">
+  <time datetime="2019-01-10T15:37:03.000Z" itemprop="datePublished">2019-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6-对象初始化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="产生一个新对象（对象初始化）"><a href="#产生一个新对象（对象初始化）" class="headerlink" title="产生一个新对象（对象初始化）"></a>产生一个新对象（对象初始化）</h3><ol>
+<li><p><code>var a = new Object()</code>产生了一个空对象，有<strong>proto</strong>属性指向object</p>
+</li>
+<li><p><code>var b = Object,create(null)</code>,产生了一个空对象，但是没有<strong>proto</strong></p>
+</li>
+<li><p><code>var c = Object.create(Object,prototype)</code>产生一个空对象，有<strong>proto</strong></p>
+</li>
+<li><p><code>var d = {}</code>,产生一个空对象，有<strong>proto</strong></p>
+</li>
+</ol>
+<h3 id="属性定义"><a href="#属性定义" class="headerlink" title="属性定义"></a>属性定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">var b = 2;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a:a,</span><br><span class="line">    b:b</span><br><span class="line">&#125; </span><br><span class="line">// obj = &#123;a: 1,b: 2&#125;</span><br><span class="line"></span><br><span class="line">//转为ES6的写法</span><br><span class="line">var obj = &#123;a,b&#125;  //a的值为a,b的值为b</span><br></pre></td></tr></table></figure>
+<ul>
+<li>属性名可以是表达式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;a&apos;</span><br><span class="line">var obj = &#123;[name]:1&#125;  //obj=&#123;a:1&#125;</span><br><span class="line">用属性放在[]中，表示引用变量</span><br></pre></td></tr></table></figure>
+<h3 id="方法定义"><a href="#方法定义" class="headerlink" title="方法定义"></a>方法定义</h3><ul>
+<li>get 、set<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var o =&#123;</span><br><span class="line">    _age = 18,</span><br><span class="line">    get age()&#123;return o._age&#125;,</span><br><span class="line">    set age(value)&#123;</span><br><span class="line">        if(value&lt;100)&#123;</span><br><span class="line">            o._age = value</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            o._age = 100</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.age   //返回１８</span><br><span class="line">o.age = 1000  // 0.age返回100</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a;</span><br><span class="line">var i = 0;</span><br><span class="line">Object.defineProperty(window,&apos;a&apos;,&#123;</span><br><span class="line">    get()&#123;</span><br><span class="line">        i+=1;</span><br><span class="line">        return i</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// a===1&amp;&amp;a===2&amp;&amp;a===3成立</span><br></pre></td></tr></table></figure>
+<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object,assign()"></a>Object,assign()</h3><ul>
+<li>将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var obj1 =　&#123;a:1,b:2,c:3&#125;</span><br><span class="line">var obj2 = Object.assign(&#123;&#125;,obj1)</span><br><span class="line">obj2  //&#123;a:1,b:2,c:3&#125;</span><br><span class="line"></span><br><span class="line">//把obj1中的每一个key,value都复制到&#123;&#125;中，然后返回这个对象</span><br><span class="line">//实现浅拷贝，改变obj2.a不影响obj1.a</span><br><span class="line"></span><br><span class="line">－－－－－－－－－－－－－－－－－－</span><br><span class="line">var obj3 = &#123;...obj1&#125;</span><br><span class="line">//实现的效果与obj２相同</span><br></pre></td></tr></table></figure>
+<p>###　writable 、configurable 、enumerable</p>
+<ul>
+<li><p>writable</p>
+<ul>
+<li>要实现属性只读有两种常见方法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//只写get方法，不写set方法</span><br><span class="line">var o = &#123;</span><br><span class="line">    get name()&#123;return &apos;leo&apos;&#125;</span><br><span class="line">&#125;</span><br><span class="line">//将writable设为false</span><br><span class="line">Object.defineProperty(o,&apos;name&apos;,&#123;value:&apos;leo&apos;,writable:false&#125;)</span><br><span class="line"></span><br><span class="line">o.name  //’leo‘</span><br><span class="line">o.name = &apos;tom&apos;  //o.name还是’leo‘</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>configurable</p>
+<ul>
+<li>是否可配置 </li>
+</ul>
+</li>
+<li>enumerable<ul>
+<li>是否可枚举（是否能被遍历）<pre><code>var o={a:1,c:3}
+Object.defineProperty(o,&apos;b&apos;,{value:2,enumerable:false})
+for(let key in o){
+console.log(key)   //打印出a、c
+}
+</code></pre></li>
+</ul>
+</li>
+<li><code>Object.getOwnPropertyDescriptor(o,&#39;b&#39;)</code>可以查看对象ｏ中的’b’属性是否可写、可枚举、可配置等详细信息</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/10/ES6-对象初始化/" data-id="cjqqty1yn0009k33qh3ttvbze" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/10/ES6-参数处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ES6-参数处理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/10/ES6-对象初始化/">ES6-对象初始化</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/ES6-参数处理/">ES6-参数处理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/ES6-箭头函数/">ES6-箭头函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/ES6-作用域/">ES6-作用域</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/">HTTP--cookie+session+LocalStorage+cache-control</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 莫正红<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
