@@ -62,6 +62,197 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-DOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/DOM/" class="article-date">
+  <time datetime="2018-11-22T02:47:04.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/DOM/">DOM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><font color="blue">DOM是一棵树（tree），树上有Node，</font>Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。</li>
+<li>DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,将 DOM 展现到内存中。</li>
+<li>DOM树形结构如下，其中<font color="blue">每个节点(包括矩形节点和椭圆形节点)都是Node类型！</font></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-a5ee96193393ef7b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li><p>document节点是Document构造函数的一个实例对象,document节点代表了整个文档(整个树型结构,我们可以通过直接输入<code>document</code>来获取document节点;html节点是Element构造函数的一个实例对象,html节点又叫根节点我们可以通过输入<code>document.documentElement</code>来获得html节点;<br>椭圆形的文本节点:”请输入文字” 是Text构造函数的一个实例对象(文本节点是Text构造函数的一个实例对象)</p>
+</li>
+<li><p>Node Element Text 的关系如下图所示：</p>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9617841-dfadc5bdd4e4ebf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="Node类型的一些属性和方法"><a href="#Node类型的一些属性和方法" class="headerlink" title="Node类型的一些属性和方法"></a>Node类型的一些属性和方法</h2><h3 id="Node属性"><a href="#Node属性" class="headerlink" title="Node属性"></a>Node属性</h3><ol>
+<li><p>节点本身某些特征的属性:</p>
+<ul>
+<li>Node.nodeName:<ul>
+<li>看着DOM,如果你不确定某个Node节点是什么类型(不确定某个Node节点是矩形还是椭圆形)，例如document.body.nodeName//‘BODY’</li>
+<li>返回节点类型,返回的值是大写的HTML元素名, 只有’svg’返回小写。</li>
+</ul>
+</li>
+<li>Node.nodeType:<ul>
+<li>根据Node类型返回某些数字</li>
+<li>Element类型,返回的数字是1</li>
+<li>Text类型,返回的数字是3</li>
+<li>Document类型,返回的数字的9</li>
+</ul>
+</li>
+<li>Node.textContent<ul>
+<li>返回当前节点及其所有后代的文本内容</li>
+<li>值得注意的是,因为Node.textContent是Node属性,所以文本节点也是有textContent的，innerHTML和innerText是Element的属性,所以TextNode.innerHTML返回的是undefined,注意,并不是返回null</li>
+<li>innerText也会返回当前节点及其所有后代的文本内容，但是会跳过script和style！</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>节点结构关系属性</p>
+<ul>
+<li>兄弟关系<ul>
+<li>Node.nextSibling</li>
+<li>Node.previousSibling</li>
+<li>以上两个属性可能会获取到空格（text节点）</li>
+</ul>
+</li>
+<li>儿子关系<ul>
+<li>Node.childNodes（返回的是一个伪数组,里面是Node节点,并且伪数组内的值是动态变化的）</li>
+<li>Node.firstChild</li>
+<li>Node.lastChild</li>
+</ul>
+</li>
+<li>父关系<ul>
+<li>Node.parentNode</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Node-方法"><a href="#Node-方法" class="headerlink" title="Node 方法"></a>Node 方法</h3><ul>
+<li><p>Node.appendChild()</p>
+</li>
+<li><p>Node.hasChildNodes()</p>
+<ul>
+<li>返回true或false</li>
+</ul>
+</li>
+<li><p>Node.cloneNode()</p>
+<ul>
+<li>（）中是什么也没有，或者值为false，则为浅拷贝，只拷贝当前节点</li>
+<li>（）中值为true，则为深拷贝，会拷贝节点和节点中的所有内容 </li>
+</ul>
+</li>
+<li><p>Node.insertBefore()</p>
+</li>
+<li><p>Node.removeChild()</p>
+</li>
+<li><p>Node.replaceChild()</p>
+</li>
+<li><p>Node.contains()</p>
+</li>
+<li><p>Node.isEqualNode()</p>
+<ul>
+<li>判断两个节点是否是相同的节点</li>
+</ul>
+</li>
+<li><p>Node.isSameNode()<br>  -判断两个节点是否为同一个节点，类似于严格相等 </p>
+</li>
+<li><p>Node.normalize()</p>
+<ul>
+<li>使常规化 </li>
+</ul>
+</li>
+</ul>
+<h2 id="document节点的一些属性和方法"><a href="#document节点的一些属性和方法" class="headerlink" title="document节点的一些属性和方法"></a>document节点的一些属性和方法</h2><h3 id="document属性"><a href="#document属性" class="headerlink" title="document属性"></a>document属性</h3><ol>
+<li><p>用于指向其他节点(快捷获取某些特殊节点)的属性</p>
+<ul>
+<li>document.documentElement指向 DOM 的 html节点</li>
+<li>document.activeElement指向获得焦点的那个节点</li>
+</ul>
+</li>
+<li><p>返回文档特定元素的伪数组集合的属性</p>
+<ul>
+<li>document.links<ul>
+<li>返回所有a标签</li>
+</ul>
+</li>
+<li>document.forms</li>
+<li>document.images</li>
+<li>document.embeds</li>
+</ul>
+</li>
+<li>返回文档信息的属性<ul>
+<li>document.location</li>
+<li>document.readyState返回的是当前文档的状态,</li>
+</ul>
+</li>
+</ol>
+<h3 id="document方法"><a href="#document方法" class="headerlink" title="document方法"></a>document方法</h3><ol>
+<li><p>获取节点</p>
+<ul>
+<li>document.querySelector(AAAA)<ul>
+<li>返回的是第一个符合CSS选择器AAAA条件的节点 </li>
+<li>除了是 document ,还可以是某个 Node 节点</li>
+</ul>
+</li>
+<li>document.querySelectorAll(AAAA)<ul>
+<li>除了是 document ,还可以是某个 Node 节点 </li>
+<li>返回的是伪数组,里面包含了所有符合选择器的节点 </li>
+<li>返回的结果不是动态的,不会实时反映元素节点的变化</li>
+</ul>
+</li>
+<li>document.getElementById()</li>
+<li>document.getElementsByClassName()</li>
+<li>document.getElementsByName()<ul>
+<li>通过name属性获取节点 </li>
+</ul>
+</li>
+<li>document.getElementsByTagName()</li>
+</ul>
+</li>
+<li><p>生成节点</p>
+<ul>
+<li>document.createElement(“div”)生成Element节点，也就是div标签</li>
+<li>document.createTextNode(“你好”)生成Text节点</li>
+</ul>
+</li>
+<li><p>添加节点</p>
+<ul>
+<li>xxx.appendChild（’div’）<ul>
+<li>给id为xxx的元素添加div标签</li>
+<li>也可以添加文本节点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/22/DOM/" data-id="cjqrhmd5r0000nn3qqsmfsokt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/21/JS函数/" class="article-date">
@@ -149,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/21/JS函数/" data-id="cjqqty1yw000dk33qdt898nu2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/21/JS函数/" data-id="cjqrhmd6i000cnn3qoaktk2f0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjqqty1z2000hk33qx1w5u06n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjqrhmd6r000inn3qmznuh8yu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -442,7 +633,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/原型与原型链/" data-id="cjqqty1zj000uk33q54wjss8f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/原型与原型链/" data-id="cjqrhmd77000tnn3qei6o13g8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -541,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型转换/" data-id="cjqqty1zh000sk33q26eshn6i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型转换/" data-id="cjqrhmd83000znn3qrdasgi5x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -718,7 +909,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjqqty1zg000rk33qmfc3687n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjqrhmd74000qnn3qkortwk8g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -847,7 +1038,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjqqty1zi000tk33q6qu2luxp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjqrhmd75000rnn3qyjhwuugq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -919,7 +1110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjqqty1y80001k33q3swresln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjqrhmd5y0001nn3qvm9vhdef" class="article-share-link">Share</a>
       
       
     </footer>
@@ -974,7 +1165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjqqty1z0000fk33q8tjsxk06" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjqrhmd6m000enn3qsqgpk4f1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1054,76 +1245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjqqty1zm000xk33q2212rg1v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-算法初级" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/31/算法初级/" class="article-date">
-  <time datetime="2018-10-31T01:13:55.000Z" itemprop="datePublished">2018-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/31/算法初级/">算法初级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="结构化编程"><a href="#结构化编程" class="headerlink" title="结构化编程"></a>结构化编程</h3><ol>
-<li>一行一行的执行</li>
-<li>有条件控制语句if…else</li>
-<li>有循环控制语句while(exp)do</li>
-</ol>
-<h4 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h4><ul>
-<li>语法是自己定的</li>
-<li>length 表示一个容器, ‘length’ 表示字符串, length &lt;- ‘length’ 表示将字符串放入容器</li>
-</ul>
-<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><ul>
-<li>输入：一个算法必须有零个或以上输入量。</li>
-<li>输出：一个算法应有一个或以上输出量，输出量是算法计算的结果。</li>
-<li>明确性：算法的描述必须无歧义，以保证算法的实际执行结果是精确地匹配要求或期望，通常要求实际运行结果是确定的。</li>
-<li>有限性：依据图灵的定义，一个算法是能够被任何图灵完备系统模拟的一串运算，而图灵机只有有限个状态、有限个输入符号和有限个转移函数（指令）。而一些定义更规定算法必须在有限个步骤内完成任务。</li>
-<li>有效性：又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现。</li>
-</ul>
-<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
-<li><p>就是数据的结构。</p>
-</li>
-<li><p>我们要解决一个跟数据相关的问题，就要分析这个问题，想出对应的数据结构，然后分析数据结构，想出算法</p>
-</li>
-<li>前端主要使用分治法——分而治之。把一个问题分区成互相独立的多个部分分别求解的思路。</li>
-</ul>
-<h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><ol>
-<li>冒泡排序（体育委员两两摸头法）：两两比较得出较小的，大的再与下一个作两两比较。</li>
-<li>选择排序（体育老师一指禅法）：在所有人中选最小的，然后再在剩下的人中选最小的。</li>
-<li>插入排序（起扑克牌法）</li>
-<li>基数排序（强迫症收扑克牌法）</li>
-<li>快排（随机）</li>
-</ol>
-<ul>
-<li><a href="https://visualgo.net/bn/sorting" target="_blank" rel="noopener">排序算法网站</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/算法初级/" data-id="cjqqty1zo000zk33q8pgted57" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjqrhmd840010nn3qxitv3bo1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1169,6 +1291,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/11/ES6-解构赋值/">ES6-解构赋值</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/10/ES6-对象初始化/">ES6-对象初始化</a>
           </li>
         
@@ -1182,10 +1308,6 @@
         
           <li>
             <a href="/2019/01/10/ES6-作用域/">ES6-作用域</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/">HTTP--cookie+session+LocalStorage+cache-control</a>
           </li>
         
       </ul>

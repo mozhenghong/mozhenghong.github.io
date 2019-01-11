@@ -62,6 +62,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6-解构赋值" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/11/ES6-解构赋值/" class="article-date">
+  <time datetime="2019-01-11T01:48:39.000Z" itemprop="datePublished">2019-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/ES6-解构赋值/">ES6-解构赋值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
+<li>可以将值从数组或属性从对象提取到不同的变量中。</li>
+<li>表达式左边定义了要从原变量中取出什么变量。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a,b,rest;</span><br><span class="line"></span><br><span class="line">[a,b] = [1,2];          //a=1,b=2</span><br><span class="line"></span><br><span class="line">[a,b,...rest] = [1,2,3,4,5];     //a=1,b=2,rest=[3,4,5]</span><br><span class="line"></span><br><span class="line">(&#123;a,b&#125; = &#123;a:10,b:20&#125;);        //a=10,b=20</span><br><span class="line"></span><br><span class="line">(&#123;a,b,...rest&#125; = &#123;a:10,b:20,c:30,d:40&#125;);      //a=10,b=20,rest=&#123;c:30,d:40&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="解构数组"><a href="#解构数组" class="headerlink" title="解构数组"></a>解构数组</h2><h4 id="数组解构赋值"><a href="#数组解构赋值" class="headerlink" title="数组解构赋值"></a>数组解构赋值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let [a,b,c] = [1,2,3];</span><br><span class="line">let [a,[b],c] = [1,[2],3]</span><br><span class="line">//a=1,b=2,c=3</span><br><span class="line">let [a] = 1 //报错！</span><br></pre></td></tr></table></figure>
+<h4 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let [a,b=2] = [3] //a=3,b=2</span><br><span class="line"></span><br><span class="line">let [a=2,b=3] = [undefined,null]  //a=2,b=null</span><br><span class="line"></span><br><span class="line">let [a=1,b=a] = [2]   //a=2,b=2</span><br></pre></td></tr></table></figure>
+<h4 id="交换变量"><a href="#交换变量" class="headerlink" title="交换变量"></a>交换变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">var b=2;</span><br><span class="line">[a,b] = [b,a];</span><br><span class="line">//a=2,b=1</span><br></pre></td></tr></table></figure>
+<h4 id="忽略某些值"><a href="#忽略某些值" class="headerlink" title="忽略某些值"></a>忽略某些值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr=[1,2,3,4]</span><br><span class="line">var [a,,,c] = arr</span><br><span class="line">//a=1 c=4</span><br></pre></td></tr></table></figure>
+<h4 id="剩余数组"><a href="#剩余数组" class="headerlink" title="剩余数组"></a>剩余数组</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var [a,...b] = [1,2,3,4]</span><br><span class="line">//a=1 ,b=[2,3,4]</span><br><span class="line">------------------------</span><br><span class="line">//不能将逗号放在剩余元素右面，因为剩余元素必须是数组的最后一个元素。</span><br><span class="line">var [a, ...b,] = [1, 2, 3];</span><br><span class="line">// SyntaxError: rest element may not have a trailing comma</span><br></pre></td></tr></table></figure>
+<h2 id="解构对象"><a href="#解构对象" class="headerlink" title="解构对象"></a>解构对象</h2><h4 id="基本赋值"><a href="#基本赋值" class="headerlink" title="基本赋值"></a>基本赋值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;a:1,b:2&#125;</span><br><span class="line"></span><br><span class="line">var&#123;a,b&#125; = o;</span><br></pre></td></tr></table></figure>
+<h4 id="给新的变量名赋值"><a href="#给新的变量名赋值" class="headerlink" title="给新的变量名赋值"></a>给新的变量名赋值</h4><ul>
+<li>可以从一个对象中提取变量并赋值给和对象属性名不同的新的变量名。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;p: 42,q: true&#125;;</span><br><span class="line"></span><br><span class="line">var&#123;p:foo,q:bar&#125; = o;</span><br><span class="line"></span><br><span class="line">//foo =42, bar = true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="默认值-1"><a href="#默认值-1" class="headerlink" title="默认值"></a>默认值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var &#123;a=10,b=5&#125; = &#123;a: 3&#125;</span><br><span class="line">a//3</span><br><span class="line">b//5</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给新的变量命名并提供默认值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var &#123;a:aa = 10, b:bb = 5&#125; = &#123;a: 3&#125;;</span><br><span class="line"></span><br><span class="line">console.log(aa); // 3</span><br><span class="line">console.log(bb); // 5</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/11/ES6-解构赋值/" data-id="cjqrhmd680006nn3qekhuqm5f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ES6-对象初始化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/10/ES6-对象初始化/" class="article-date">
@@ -136,7 +191,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-对象初始化/" data-id="cjqqty1yn0009k33qh3ttvbze" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-对象初始化/" data-id="cjqrhmd650004nn3qbhetrtnl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -213,7 +268,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-参数处理/" data-id="cjqqty1yj0006k33qt1rtqtth" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-参数处理/" data-id="cjqrhmd6k000dnn3qjuo3y5j6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -278,7 +333,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-箭头函数/" data-id="cjqqty1yk0007k33q0spjdiqb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-箭头函数/" data-id="cjqrhmd670005nn3q4h0w46so" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,7 +414,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-作用域/" data-id="cjqqty1yi0005k33q152gtoka" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-作用域/" data-id="cjqrhmd6b0008nn3qpmbzsywh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -513,7 +568,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/" data-id="cjqqty1yp000ak33qcj9m9c56" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/" data-id="cjqrhmd6d0009nn3q2ug1cdan" class="article-share-link">Share</a>
       
       
     </footer>
@@ -576,7 +631,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjqqty1yf0003k33qv7ln0e7y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjqrhmd620002nn3qv63ol199" class="article-share-link">Share</a>
       
       
     </footer>
@@ -649,7 +704,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/JSONP/" data-id="cjqqty1ys000bk33qxdu44rlt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/JSONP/" data-id="cjqrhmd6h000bnn3qkin1tvuz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -744,7 +799,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/AJAX/" data-id="cjqqty1y10000k33qsh81pg7k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/AJAX/" data-id="cjqrhmd640003nn3q1xq4nwj9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -807,198 +862,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/for循环中的闭包/" data-id="cjqqty1zb000ok33qu4vhyo3c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DOM" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/22/DOM/" class="article-date">
-  <time datetime="2018-11-22T02:47:04.000Z" itemprop="datePublished">2018-11-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/22/DOM/">DOM</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
-<li><font color="blue">DOM是一棵树（tree），树上有Node，</font>Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。</li>
-<li>DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,将 DOM 展现到内存中。</li>
-<li>DOM树形结构如下，其中<font color="blue">每个节点(包括矩形节点和椭圆形节点)都是Node类型！</font></li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/9617841-a5ee96193393ef7b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<ul>
-<li><p>document节点是Document构造函数的一个实例对象,document节点代表了整个文档(整个树型结构,我们可以通过直接输入<code>document</code>来获取document节点;html节点是Element构造函数的一个实例对象,html节点又叫根节点我们可以通过输入<code>document.documentElement</code>来获得html节点;<br>椭圆形的文本节点:”请输入文字” 是Text构造函数的一个实例对象(文本节点是Text构造函数的一个实例对象)</p>
-</li>
-<li><p>Node Element Text 的关系如下图所示：</p>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/9617841-dfadc5bdd4e4ebf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="Node类型的一些属性和方法"><a href="#Node类型的一些属性和方法" class="headerlink" title="Node类型的一些属性和方法"></a>Node类型的一些属性和方法</h2><h3 id="Node属性"><a href="#Node属性" class="headerlink" title="Node属性"></a>Node属性</h3><ol>
-<li><p>节点本身某些特征的属性:</p>
-<ul>
-<li>Node.nodeName:<ul>
-<li>看着DOM,如果你不确定某个Node节点是什么类型(不确定某个Node节点是矩形还是椭圆形)，例如document.body.nodeName//‘BODY’</li>
-<li>返回节点类型,返回的值是大写的HTML元素名, 只有’svg’返回小写。</li>
-</ul>
-</li>
-<li>Node.nodeType:<ul>
-<li>根据Node类型返回某些数字</li>
-<li>Element类型,返回的数字是1</li>
-<li>Text类型,返回的数字是3</li>
-<li>Document类型,返回的数字的9</li>
-</ul>
-</li>
-<li>Node.textContent<ul>
-<li>返回当前节点及其所有后代的文本内容</li>
-<li>值得注意的是,因为Node.textContent是Node属性,所以文本节点也是有textContent的，innerHTML和innerText是Element的属性,所以TextNode.innerHTML返回的是undefined,注意,并不是返回null</li>
-<li>innerText也会返回当前节点及其所有后代的文本内容，但是会跳过script和style！</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>节点结构关系属性</p>
-<ul>
-<li>兄弟关系<ul>
-<li>Node.nextSibling</li>
-<li>Node.previousSibling</li>
-<li>以上两个属性可能会获取到空格（text节点）</li>
-</ul>
-</li>
-<li>儿子关系<ul>
-<li>Node.childNodes（返回的是一个伪数组,里面是Node节点,并且伪数组内的值是动态变化的）</li>
-<li>Node.firstChild</li>
-<li>Node.lastChild</li>
-</ul>
-</li>
-<li>父关系<ul>
-<li>Node.parentNode</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="Node-方法"><a href="#Node-方法" class="headerlink" title="Node 方法"></a>Node 方法</h3><ul>
-<li><p>Node.appendChild()</p>
-</li>
-<li><p>Node.hasChildNodes()</p>
-<ul>
-<li>返回true或false</li>
-</ul>
-</li>
-<li><p>Node.cloneNode()</p>
-<ul>
-<li>（）中是什么也没有，或者值为false，则为浅拷贝，只拷贝当前节点</li>
-<li>（）中值为true，则为深拷贝，会拷贝节点和节点中的所有内容 </li>
-</ul>
-</li>
-<li><p>Node.insertBefore()</p>
-</li>
-<li><p>Node.removeChild()</p>
-</li>
-<li><p>Node.replaceChild()</p>
-</li>
-<li><p>Node.contains()</p>
-</li>
-<li><p>Node.isEqualNode()</p>
-<ul>
-<li>判断两个节点是否是相同的节点</li>
-</ul>
-</li>
-<li><p>Node.isSameNode()<br>  -判断两个节点是否为同一个节点，类似于严格相等 </p>
-</li>
-<li><p>Node.normalize()</p>
-<ul>
-<li>使常规化 </li>
-</ul>
-</li>
-</ul>
-<h2 id="document节点的一些属性和方法"><a href="#document节点的一些属性和方法" class="headerlink" title="document节点的一些属性和方法"></a>document节点的一些属性和方法</h2><h3 id="document属性"><a href="#document属性" class="headerlink" title="document属性"></a>document属性</h3><ol>
-<li><p>用于指向其他节点(快捷获取某些特殊节点)的属性</p>
-<ul>
-<li>document.documentElement指向 DOM 的 html节点</li>
-<li>document.activeElement指向获得焦点的那个节点</li>
-</ul>
-</li>
-<li><p>返回文档特定元素的伪数组集合的属性</p>
-<ul>
-<li>document.links<ul>
-<li>返回所有a标签</li>
-</ul>
-</li>
-<li>document.forms</li>
-<li>document.images</li>
-<li>document.embeds</li>
-</ul>
-</li>
-<li>返回文档信息的属性<ul>
-<li>document.location</li>
-<li>document.readyState返回的是当前文档的状态,</li>
-</ul>
-</li>
-</ol>
-<h3 id="document方法"><a href="#document方法" class="headerlink" title="document方法"></a>document方法</h3><ol>
-<li><p>获取节点</p>
-<ul>
-<li>document.querySelector(AAAA)<ul>
-<li>返回的是第一个符合CSS选择器AAAA条件的节点 </li>
-<li>除了是 document ,还可以是某个 Node 节点</li>
-</ul>
-</li>
-<li>document.querySelectorAll(AAAA)<ul>
-<li>除了是 document ,还可以是某个 Node 节点 </li>
-<li>返回的是伪数组,里面包含了所有符合选择器的节点 </li>
-<li>返回的结果不是动态的,不会实时反映元素节点的变化</li>
-</ul>
-</li>
-<li>document.getElementById()</li>
-<li>document.getElementsByClassName()</li>
-<li>document.getElementsByName()<ul>
-<li>通过name属性获取节点 </li>
-</ul>
-</li>
-<li>document.getElementsByTagName()</li>
-</ul>
-</li>
-<li><p>生成节点</p>
-<ul>
-<li>document.createElement(“div”)生成Element节点，也就是div标签</li>
-<li>document.createTextNode(“你好”)生成Text节点</li>
-</ul>
-</li>
-<li><p>添加节点</p>
-<ul>
-<li>xxx.appendChild（’div’）<ul>
-<li>给id为xxx的元素添加div标签</li>
-<li>也可以添加文本节点</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/DOM/" data-id="cjqqty1yg0004k33q5jyz5fj1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/for循环中的闭包/" data-id="cjqrhmd6w000mnn3qdwob96v0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1044,6 +908,10 @@ console.log(key)   //打印出a、c
       <ul>
         
           <li>
+            <a href="/2019/01/11/ES6-解构赋值/">ES6-解构赋值</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/10/ES6-对象初始化/">ES6-对象初始化</a>
           </li>
         
@@ -1057,10 +925,6 @@ console.log(key)   //打印出a、c
         
           <li>
             <a href="/2019/01/10/ES6-作用域/">ES6-作用域</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/">HTTP--cookie+session+LocalStorage+cache-control</a>
           </li>
         
       </ul>
