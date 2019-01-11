@@ -62,6 +62,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-for循环中的闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/27/for循环中的闭包/" class="article-date">
+  <time datetime="2018-11-27T06:07:29.000Z" itemprop="datePublished">2018-11-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/27/for循环中的闭包/">for循环中的闭包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>问题</li>
+</ol>
+<ul>
+<li>以下代码中原本是想每次点击对应的目标弹出对应的数字下标0-9，但实际上无论点击哪个目标都会弹出数字10.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;0&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;1&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;2&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;3&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;4&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;5&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;6&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;7&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;8&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;child&quot;&gt;9&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">       var childArray= document.getElementsByClassName(&apos;child&apos;)</span><br><span class="line">       for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">           childArray[i].onclick=function()&#123;</span><br><span class="line">               console.log(i)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<font color="blue">上面代码中，当执行onclick事件时循环已经结束了，这时打印的i是外部定义的i，此时i=10（变量i和这个函数形成了闭包）</font>
+
+<ol start="2">
+<li><p>解决方法</p>
+<ul>
+<li><p>方案1：将var改为let</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let childArray = document.getElementsByClassName(&apos;child&apos;);</span><br><span class="line">    for (let i = 0; i &lt; childArray.length; i++) &#123;</span><br><span class="line">        childArray[i].onclick = function () &#123;</span><br><span class="line">            console.log(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>let定义的变量作用域为块级作用域，只在{}中有效。</p>
+</li>
+<li><p>方案2：增加闭包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">    childArray[i].onclick = function () &#123;</span><br><span class="line">                var copy = i;</span><br><span class="line">                return function () &#123;</span><br><span class="line">                    console.log(copy);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方案3：立即执行函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">(function () &#123;</span><br><span class="line">            var copy = i;</span><br><span class="line">            childArray[i].onclick = function () &#123;</span><br><span class="line">                console.log(copy);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码每执行一次，就会产生一个对象存储copy和onclick函数</p>
+</li>
+<li>方案4:与方案3相似<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;childArray.length;i++)&#123;</span><br><span class="line">    (function (arg) &#123;</span><br><span class="line">    childArray[i].onclick = function () &#123;</span><br><span class="line">        console.log(arg);</span><br><span class="line">    &#125;;</span><br><span class="line">    &#125;)(i);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/27/for循环中的闭包/" data-id="cjqrmd1n8000p963q8fgj74is" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-DOM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/DOM/" class="article-date">
@@ -243,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/22/DOM/" data-id="cjqrhmd5r0000nn3qqsmfsokt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/22/DOM/" data-id="cjqrmd1mg0007963qvdr2kb2c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/21/JS函数/" data-id="cjqrhmd6i000cnn3qoaktk2f0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/21/JS函数/" data-id="cjqrmd1mv000f963q8p9tgqqh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjqrhmd6r000inn3qmznuh8yu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/20/JS数组/" data-id="cjqrmd1n2000k963q3p154mbx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -633,7 +696,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/原型与原型链/" data-id="cjqrhmd77000tnn3qei6o13g8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/原型与原型链/" data-id="cjqrmd1ng000v963qreead3e4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -732,7 +795,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型转换/" data-id="cjqrhmd83000znn3qrdasgi5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型转换/" data-id="cjqrmd1ne000t963qk8jhf2mw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -909,7 +972,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjqrhmd74000qnn3qkortwk8g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjqrmd1nh000w963qzhirhtgn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1038,7 +1101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjqrhmd75000rnn3qyjhwuugq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjqrmd1nf000u963qys99l7ed" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1110,7 +1173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjqrhmd5y0001nn3qvm9vhdef" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjqrmd1m70002963q1ljm3zqo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1165,87 +1228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjqrhmd6m000enn3qsqgpk4f1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据结构" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/31/数据结构/" class="article-date">
-  <time datetime="2018-10-31T01:14:42.000Z" itemprop="datePublished">2018-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/31/数据结构/">数据结构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>哈希表</li>
-</ol>
-<ul>
-<li><p>一个key对应一个value（数组也是哈希）</p>
-</li>
-<li><p>哈希计数排序：有好多桶，一个桶里只能放一类数，比如这个桶里只能放1，下个桶里只能放2</p>
-</li>
-<li><p>桶排序：一个桶里可以放好几类，比如这个桶里放1-10，下个桶里放11-20，减少了桶的数量</p>
-</li>
-<li><p>基数排序：先按个位数排（入桶）==&gt;按顺序全部出桶==&gt;按十位数排序（入桶）==&gt;按顺序出桶==&gt;按百位数排序…</p>
-</li>
-</ul>
-<ol start="2">
-<li>队列（queue）</li>
-</ol>
-<ul>
-<li>先进先出（排队）</li>
-<li>可以用数组实现</li>
-<li>入：q.push()<br>出：q.shift()</li>
-</ul>
-<ol start="3">
-<li>栈（stack）</li>
-</ol>
-<ul>
-<li>先进后出（盗梦空间）</li>
-<li>可以用数组实现</li>
-<li>入：stack.push()<br>出:stack.pop()</li>
-</ul>
-<ol start="4">
-<li>链表</li>
-</ol>
-<ul>
-<li>数组无法直接删除中间的一项，链表可以</li>
-</ul>
-<ol start="5">
-<li>树（tree）</li>
-</ol>
-<ul>
-<li>二叉树：每次最多分两个叉</li>
-<li>满二叉树：叶子全长满</li>
-<li>完全二叉树：只能缺最右边的叶子节点（可以缺好几个，但必须都是从右往左缺的）</li>
-<li>堆排序：每个父节点的元素值都大于子节点。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjqrhmd840010nn3qxitv3bo1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjqrmd1my000h963qp3lrpryp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1291,6 +1274,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/11/ES6-模块/">ES6-模块</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/11/ES6-解构赋值/">ES6-解构赋值</a>
           </li>
         
@@ -1304,10 +1291,6 @@
         
           <li>
             <a href="/2019/01/10/ES6-箭头函数/">ES6-箭头函数</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/ES6-作用域/">ES6-作用域</a>
           </li>
         
       </ul>
