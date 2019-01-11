@@ -62,6 +62,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6-迭代" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/11/ES6-迭代/" class="article-date">
+  <time datetime="2019-01-11T06:25:26.000Z" itemprop="datePublished">2019-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/ES6-迭代/">ES6-迭代</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
+<li>迭代器是一个对象，它提供了一个next() 方法，用来返回序列中的下一项。这个方法返回包含两个属性：done和 value。<br>迭代器对象一旦被创建，就可以反复调用next()。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function makeIterator(array)&#123;</span><br><span class="line">    var nextIndex = 0;</span><br><span class="line">    return &#123;</span><br><span class="line">       next: function()&#123;</span><br><span class="line">           return nextIndex &lt; array.length ?</span><br><span class="line">               &#123;value: array[nextIndex++], done: false&#125; :</span><br><span class="line">               &#123;done: true&#125;;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">-----------------------------------------</span><br><span class="line">//一旦初始化，next()方法可以用来依次访问对象中的键值：</span><br><span class="line"></span><br><span class="line">var it = makeIterator([&apos;yo&apos;, &apos;ya&apos;]);</span><br><span class="line">console.log(it.next().value); // &apos;yo&apos;</span><br><span class="line">console.log(it.next().value); // &apos;ya&apos;</span><br><span class="line">console.log(it.next().done);  // true</span><br></pre></td></tr></table></figure>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><ul>
+<li>如果使用function*语法,可以得到生成器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function* idMaker() &#123;</span><br><span class="line">  var index = 0;</span><br><span class="line">  while(true)</span><br><span class="line">    yield index++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var gen = idMaker();</span><br><span class="line"></span><br><span class="line">console.log(gen.next().value); // 0</span><br><span class="line">console.log(gen.next().value); // 1</span><br><span class="line">console.log(gen.next().value); // 2</span><br><span class="line">// ...</span><br></pre></td></tr></table></figure>
+<h2 id="自定义迭代对象"><a href="#自定义迭代对象" class="headerlink" title="自定义迭代对象"></a>自定义迭代对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var myIterable = &#123;&#125;;</span><br><span class="line">myIterable[Symbol.iterator] = function* () &#123;</span><br><span class="line">    yield 1;</span><br><span class="line">    yield 2;</span><br><span class="line">    yield 3;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">for (let value of myIterable) &#123; </span><br><span class="line">    console.log(value); </span><br><span class="line">&#125;</span><br><span class="line">// 1</span><br><span class="line">// 2</span><br><span class="line">// 3</span><br></pre></td></tr></table></figure>
+<h2 id="三种遍历"><a href="#三种遍历" class="headerlink" title="三种遍历"></a>三种遍历</h2><ul>
+<li><p><code>for(let i=0;i&lt;array.length; i++){}</code></p>
+</li>
+<li><p><code>for(let key in array){}</code></p>
+</li>
+<li><p><code>for(let item of array){}</code>  ，item是value,不是key.<br><br>for …of 对数组可以，对一般的对象不可以。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/11/ES6-迭代/" data-id="cjqrpscly000hyr3qcysp2dln" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ES6-新增数据类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/11/ES6-新增数据类型/" class="article-date">
@@ -126,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/11/ES6-新增数据类型/" data-id="cjqrnoafx000cez3qyo38vr1b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/11/ES6-新增数据类型/" data-id="cjqrpscln000ayr3q6yzcm8cs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/11/ES6-模块/" data-id="cjqrnoafr0008ez3qn9n80mun" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/11/ES6-模块/" data-id="cjqrpscll0008yr3qcffkij0y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/11/ES6-解构赋值/" data-id="cjqrnoafu000aez3qmwgys9qh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/11/ES6-解构赋值/" data-id="cjqrpsclp000byr3qpp2dfq2s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -329,7 +382,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-对象初始化/" data-id="cjqrnoafq0007ez3qixt0sp0j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-对象初始化/" data-id="cjqrpsclk0007yr3qq7g9gc0x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +459,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-参数处理/" data-id="cjqrnoafn0005ez3qmwbvpfoi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-参数处理/" data-id="cjqrpscli0006yr3qlrzta4up" class="article-share-link">Share</a>
       
       
     </footer>
@@ -471,7 +524,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-箭头函数/" data-id="cjqrnoafs0009ez3q7ozs6htp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-箭头函数/" data-id="cjqrpsclm0009yr3qgtwxi1jn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -552,7 +605,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/10/ES6-作用域/" data-id="cjqrnoafp0006ez3q4kt36drj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/10/ES6-作用域/" data-id="cjqrpsclh0005yr3qe7bm02ep" class="article-share-link">Share</a>
       
       
     </footer>
@@ -706,7 +759,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/" data-id="cjqrnoag1000eez3qpqy91y69" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/HTTP-cookie-session-LocalStorage-cache-control/" data-id="cjqrpsclu000eyr3qqrr0mmac" class="article-share-link">Share</a>
       
       
     </footer>
@@ -769,80 +822,7 @@ console.log(key)   //打印出a、c
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjqrnoafl0003ez3qf0c7h0e2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JSONP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/17/JSONP/" class="article-date">
-  <time datetime="2018-12-17T15:52:40.000Z" itemprop="datePublished">2018-12-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/17/JSONP/">JSONP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="局部刷新"><a href="#局部刷新" class="headerlink" title="局部刷新"></a>局部刷新</h2><ol>
-<li>用<code>&lt;img&gt;</code>来造get请求</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">button.addEventListener(&apos;click&apos;, (e)=&gt;&#123;</span><br><span class="line">    let image = document.createElement(&apos;img&apos;)</span><br><span class="line">    image.src = &apos;/pay&apos;</span><br><span class="line">    image.onload = function()&#123; // 状态码是 200~299 则表示成功</span><br><span class="line">        alert(&apos;成功&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    image.onerror = function()&#123; // 状态码大于等于 400 则表示失败</span><br><span class="line">        alert(&apos;失败&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>用<code>&lt;script&gt;</code>来造get请求</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">button.addEventListener(&apos;click&apos;, (e)=&gt;&#123;</span><br><span class="line">    let script = document.createElement(&apos;script&apos;)</span><br><span class="line">    script.src = &apos;/pay&apos;</span><br><span class="line">    document.body.appendChild(script)//必须加到html中才可以！！！</span><br><span class="line">    script.onload = function(e)&#123; // 状态码是 200~299 则表示成功</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">    script.onerror = function(e)&#123; // 状态码大于等于 400 则表示失败</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><ul>
-<li><p>JSONP就是动态创建<code>&lt;script&gt;</code>标签，’src‘指向get请求的’url‘，同时传入一个callback查询参数，然后可以处理获取到的数据。</p>
-</li>
-<li><p>请求方：momo.com的前端程序员（浏览器）</p>
-</li>
-<li>响应方：wenwen.com的后端程序员（服务器）</li>
-</ul>
-<ol>
-<li>请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy</li>
-<li>响应方根据查询参数callbackName，构造形如<ul>
-<li>yyy.call(undefined, ‘你要的数据’)</li>
-<li>yyy(‘你要的数据’)<br><br>这样的响应</li>
-</ul>
-</li>
-<li>浏览器接收到响应，就会执行 yyy.call(undefined, ‘你要的数据’)</li>
-<li>那么请求方就知道了他要的数据</li>
-</ol>
-<ul>
-<li>用JSONP做请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">button.addEventListener(&apos;click&apos;, (e)=&gt;&#123;</span><br><span class="line">    let script = document.createElement(&apos;script&apos;)</span><br><span class="line">    let functionName = &apos;momo&apos;+ parseInt(Math.random()*10000000 ,10)</span><br><span class="line">    window[functionName] = function()&#123;  // 每次请求之前搞出一个随机的函数</span><br><span class="line">        amount.innerText = amount.innerText - 0 - 1</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = &apos;/pay?callback=&apos; + functionName</span><br><span class="line">    document.body.appendChild(script)</span><br><span class="line">    script.onload = function(e)&#123; // 状态码是 200~299 则表示成功</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">        delete window[functionName] // 请求完了就干掉这个随机函数</span><br><span class="line">    &#125;</span><br><span class="line">    script.onerror = function(e)&#123; // 状态码大于等于 400 则表示失败</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">        delete window[functionName] // 请求完了就干掉这个随机函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>后端代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (path === &apos;/pay&apos;)&#123;</span><br><span class="line">    let amount = fs.readFileSync(&apos;./db&apos;, &apos;utf8&apos;)</span><br><span class="line">    amount -= 1</span><br><span class="line">    fs.writeFileSync(&apos;./db&apos;, amount)</span><br><span class="line">    let callbackName = query.callback</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;, &apos;application/javascript&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">        $&#123;callbackName&#125;.call(undefined, &apos;success&apos;)</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>jQuery中的JSONP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> $.ajax(&#123;</span><br><span class="line">   url: &quot;http://wenwen.com:8002/pay&quot;,//响应方</span><br><span class="line">   dataType: &quot;jsonp&quot;,</span><br><span class="line">   success: function( response ) &#123;</span><br><span class="line">       if(response === &apos;success&apos;)&#123;</span><br><span class="line">       amount.innerText = amount.innerText - 1</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="JSONP为什么不支持POST请求"><a href="#JSONP为什么不支持POST请求" class="headerlink" title="JSONP为什么不支持POST请求"></a>JSONP为什么不支持POST请求</h3><ul>
-<li>JSONP是通过动态创建<code>&lt;script&gt;</code>标签实现的，<br>动态创建的<code>&lt;script&gt;</code>只能发get请求，不能发post请求</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/17/JSONP/" data-id="cjqrnoag2000fez3qez0c7dyk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/17/DOM事件模型/" data-id="cjqrpsclf0003yr3qfra16gq6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -888,6 +868,10 @@ console.log(key)   //打印出a、c
       <ul>
         
           <li>
+            <a href="/2019/01/11/ES6-迭代/">ES6-迭代</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/11/ES6-新增数据类型/">ES6-新增数据类型</a>
           </li>
         
@@ -901,10 +885,6 @@ console.log(key)   //打印出a、c
         
           <li>
             <a href="/2019/01/10/ES6-对象初始化/">ES6-对象初始化</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/ES6-参数处理/">ES6-参数处理</a>
           </li>
         
       </ul>
