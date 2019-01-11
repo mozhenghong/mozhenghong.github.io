@@ -5,19 +5,19 @@
   
 
   
-  <title>css-移动端页面（响应式） | mozhenghong</title>
+  <title>ES6-Promise | mozhenghong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="media query 媒体查询12345&amp;lt;style&amp;gt;    @media(条件1)and(条件2)&amp;#123;        选择器&amp;#123;属性：属性值；&amp;#125;    &amp;#125;&amp;lt;/style&amp;gt; 写在后面的优先级大 隐藏元素 display:none;  不同屏幕大小切换状态==&amp;gt;@media  同一屏幕切换状态==&amp;gt;js  手机端要加一个met">
+  <meta name="description" content="回调 function(callback){callback()} 把一个函数Ａ传给另一个函数Ｂ调用，那么Ａ就是回调函数。  回调地狱：回调套回调，套很多层。promise可以解决回调地狱。    Promise Promise 对象用于表示一个异步操作的最终状态（完成或失败），以及其返回的值。  语法：成功调用resolve(),失败调用reject()   12345678function x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css-移动端页面（响应式）">
-<meta property="og:url" content="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/index.html">
+<meta property="og:title" content="ES6-Promise">
+<meta property="og:url" content="http://yoursite.com/2019/01/11/ES6-Promise/index.html">
 <meta property="og:site_name" content="mozhenghong">
-<meta property="og:description" content="media query 媒体查询12345&amp;lt;style&amp;gt;    @media(条件1)and(条件2)&amp;#123;        选择器&amp;#123;属性：属性值；&amp;#125;    &amp;#125;&amp;lt;/style&amp;gt; 写在后面的优先级大 隐藏元素 display:none;  不同屏幕大小切换状态==&amp;gt;@media  同一屏幕切换状态==&amp;gt;js  手机端要加一个met">
+<meta property="og:description" content="回调 function(callback){callback()} 把一个函数Ａ传给另一个函数Ｂ调用，那么Ａ就是回调函数。  回调地狱：回调套回调，套很多层。promise可以解决回调地狱。    Promise Promise 对象用于表示一个异步操作的最终状态（完成或失败），以及其返回的值。  语法：成功调用resolve(),失败调用reject()   12345678function x">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-30T06:16:51.338Z">
+<meta property="og:updated_time" content="2019-01-11T08:22:47.669Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css-移动端页面（响应式）">
-<meta name="twitter:description" content="media query 媒体查询12345&amp;lt;style&amp;gt;    @media(条件1)and(条件2)&amp;#123;        选择器&amp;#123;属性：属性值；&amp;#125;    &amp;#125;&amp;lt;/style&amp;gt; 写在后面的优先级大 隐藏元素 display:none;  不同屏幕大小切换状态==&amp;gt;@media  同一屏幕切换状态==&amp;gt;js  手机端要加一个met">
+<meta name="twitter:title" content="ES6-Promise">
+<meta name="twitter:description" content="回调 function(callback){callback()} 把一个函数Ａ传给另一个函数Ｂ调用，那么Ａ就是回调函数。  回调地狱：回调套回调，套很多层。promise可以解决回调地狱。    Promise Promise 对象用于表示一个异步操作的最终状态（完成或失败），以及其返回的值。  语法：成功调用resolve(),失败调用reject()   12345678function x">
   
     <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-css-移动端页面（响应式）" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ES6-Promise" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/30/css-移动端页面（响应式）/" class="article-date">
-  <time datetime="2018-10-30T06:07:44.000Z" itemprop="datePublished">2018-10-30</time>
+    <a href="/2019/01/11/ES6-Promise/" class="article-date">
+  <time datetime="2019-01-11T07:24:02.000Z" itemprop="datePublished">2019-01-11</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      css-移动端页面（响应式）
+      ES6-Promise
     </h1>
   
 
@@ -86,27 +86,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="media-query-媒体查询"><a href="#media-query-媒体查询" class="headerlink" title="media query 媒体查询"></a>media query 媒体查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    @media(条件1)and(条件2)&#123;</span><br><span class="line">        选择器&#123;属性：属性值；&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p><em>写在后面的优先级大</em></p>
-<h3 id="隐藏元素"><a href="#隐藏元素" class="headerlink" title="隐藏元素"></a>隐藏元素</h3><ul>
-<li><p><code>display:none;</code></p>
+        <h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><ul>
+<li><code>function(callback){callback()}</code></li>
+<li><p>把一个函数Ａ传给另一个函数Ｂ调用，那么Ａ就是回调函数。</p>
 </li>
-<li><p>不同屏幕大小切换状态==&gt;@media</p>
+<li><p>回调地狱：回调套回调，套很多层。promise可以解决回调地狱。 </p>
 </li>
-<li>同一屏幕切换状态==&gt;js</li>
 </ul>
-<h3 id="手机端要加一个meta"><a href="#手机端要加一个meta" class="headerlink" title="手机端要加一个meta"></a>手机端要加一个meta</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="手机端的交互方式"><a href="#手机端的交互方式" class="headerlink" title="手机端的交互方式"></a>手机端的交互方式</h3><ul>
-<li>没有hover</li>
-<li>有touch事件，click==&gt;touch</li>
-<li>没有resize</li>
-<li>没有滚动条</li>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><ul>
+<li><p>Promise 对象用于表示一个异步操作的最终状态（完成或失败），以及其返回的值。</p>
+</li>
+<li><p>语法：成功调用resolve(),失败调用reject()</p>
+</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function x()&#123;</span><br><span class="line">    return new Promise(function(resolve,reject)&#123;</span><br><span class="line">        resolve(&apos;momo&apos;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">x().then().then()</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjqrtmx7t000pcy3q245i816z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/11/ES6-Promise/" data-id="cjqrtmx6w0004cy3qjwkks2cx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,19 +113,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/10/30/flex布局与布局套路/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/11/ES6-类/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          flex布局与布局套路
+          ES6-类
         
       </div>
     </a>
   
   
-    <a href="/2018/10/30/css-icon全解/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/11/ES6-迭代/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">css-icon全解</div>
+      <div class="article-nav-title">ES6-迭代</div>
     </a>
   
 </nav>

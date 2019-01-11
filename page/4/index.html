@@ -62,6 +62,133 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css-icon全解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/30/css-icon全解/" class="article-date">
+  <time datetime="2018-10-30T03:23:50.000Z" itemprop="datePublished">2018-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/30/css-icon全解/">css-icon全解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Photoshop"><a href="#Photoshop" class="headerlink" title="Photoshop"></a>Photoshop</h4><ol>
+<li>拿到的设计图为psd格式要转换成png格式的单个图标</li>
+</ol>
+<p>在图上右键==&gt;点击要选的图层，得到图层==&gt;在图层上右键，复制图层（duplicate layer）==&gt;image ==&gt;trim(裁剪)==&gt;image==&gt;canvas size(修改画布大小)==&gt;file==&gt;export==&gt;quick export png(导出png格式)</p>
+<ol start="2">
+<li>拿到png格式设计图</li>
+</ol>
+<p>用Photoshop打开png==&gt;选中其中一个图标==&gt;image==&gt;crop(剪切)==&gt;选择魔法棒工具==&gt;选中要选择的区域==&gt;右键==&gt;select inverse==&gt;按delete键删除==&gt;右键==&gt;decelect==&gt;image==&gt;trim==&gt;image==&gt;canvas size(修改画布大小)==&gt;file==&gt;export==&gt;quick export png(导出png格式)</p>
+<h2 id="icon的各种做法"><a href="#icon的各种做法" class="headerlink" title="icon的各种做法"></a>icon的各种做法</h2><ol>
+<li><code>&lt;img&gt;</code>法</li>
+</ol>
+<p>可自适应宽高，改变宽，高也会自动改变，会保持原本的默认比例。</p>
+<ol start="2">
+<li><p><code>&lt;background&gt;</code>法</p>
+</li>
+<li><p>SVG 法（推荐）</p>
+</li>
+</ol>
+<p>（1）在<a href="http://iconfont.cn" target="_blank" rel="noopener">iconfont网站</a>搜索想要的矢量图，加入购物车</p>
+<p>（2）点击添加至项目</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14473072-fc9ac8b16ef187d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>(3）点击symbol，将下方代码复制到script的src中</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14473072-60d921b2cd9d245c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>(4)点击使用帮助，然后按照symbol引用下的要求做即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/30/css-icon全解/" data-id="cjqrtmx7r000ocy3qqznwdwhx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-css-堆叠上下文" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/30/css-堆叠上下文/" class="article-date">
+  <time datetime="2018-10-30T03:05:57.000Z" itemprop="datePublished">2018-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/30/css-堆叠上下文/">css-堆叠上下文</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><ol>
+<li><p>当父元素未被定位时(从里到外)：</p>
+<p>(1)z-index为负</p>
+<p>(2)background</p>
+<p>(3)border</p>
+<p>(4)div</p>
+<p>(5)float</p>
+<p>(6)文字、内联</p>
+<p>(7)position (z-index:0)</p>
+<p>(8)z-index大于0</p>
+<p><em>同级相互比较，谁出现后谁靠前</em></p>
+</li>
+<li><p>当父元素被定位时(relative)（成立了一个堆叠上下文）</p>
+</li>
+</ol>
+<p>从里到外的顺序为(2)=&gt;(3)=&gt;(1)=&gt;(4)=&gt;(5)=&gt;(6)=&gt;(7)=&gt;(8)</p>
+<h3 id="堆叠上下文-the-stacking-context"><a href="#堆叠上下文-the-stacking-context" class="headerlink" title="堆叠上下文(the stacking context)"></a>堆叠上下文(the stacking context)</h3><p><strong>我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么，若满足下列条件之一的就是堆叠上下文：</strong></p>
+<ul>
+<li>根元素 (HTML),</li>
+<li>z-index 值不为 “auto”的 绝对/相对定位，</li>
+<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</li>
+<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
+<li>transform 属性值不为 “none”的元素，</li>
+<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
+<li>filter值不为“none”的元素，</li>
+<li>perspective值不为“none”的元素，</li>
+<li>isolation 属性被设置为 “isolate”的元素，</li>
+<li>position: fixed</li>
+<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
+<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/30/css-堆叠上下文/" data-id="cjqrtmx7q000ncy3q7xv4le0n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-css-宽度与高度" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/30/css-宽度与高度/" class="article-date">
@@ -131,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-宽度与高度/" data-id="cjqrpscm6000oyr3qzvrky45z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-宽度与高度/" data-id="cjqrtmx7w000rcy3qqb9t73vn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/css基础/" data-id="cjqrpscm7000pyr3q71y2xbe8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/css基础/" data-id="cjqrtmx7v000qcy3qga81fagk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/24/HTML/" data-id="cjqrpsclr000cyr3qgngksdnc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/24/HTML/" data-id="cjqrtmx7k000jcy3q08tjitmb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -460,7 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/23/命令行基础/" data-id="cjqrpscmk000zyr3qgu0scd1t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/23/命令行基础/" data-id="cjqrtmx880012cy3qob5kkw3c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -561,7 +688,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/HTTP入门/" data-id="cjqrpscls000dyr3qglc1n9z1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/17/HTTP入门/" data-id="cjqrtmx7f000fcy3qbjd7edsj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -639,7 +766,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/利用Hexo写博客/" data-id="cjqrpscmi000yyr3qkscjl27w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/17/利用Hexo写博客/" data-id="cjqrtmx890013cy3qs3ru94jr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -698,7 +825,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/17/git的使用/" data-id="cjqrpscmd000uyr3qekd72pzn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/17/git的使用/" data-id="cjqrtmx82000wcy3qiozceig5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -774,89 +901,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/15/deepinLinux系统安装及软件安装/" data-id="cjqrpscma000ryr3qlhtlhqb1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-开博大吉" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/14/开博大吉/" class="article-date">
-  <time datetime="2018-10-14T14:21:41.000Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/开博大吉/">开博大吉</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开博大吉</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/开博大吉/" data-id="cjqrpscmo0011yr3qsesn5zh7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/14/hello-world/" class="article-date">
-  <time datetime="2018-10-14T14:19:56.928Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/hello-world/" data-id="cjqrpscmc000tyr3qvwswv5hb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/15/deepinLinux系统安装及软件安装/" data-id="cjqrtmx7z000ucy3qaq3zgqbk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -870,7 +915,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -902,6 +947,14 @@
       <ul>
         
           <li>
+            <a href="/2019/01/11/ES6-类/">ES6-类</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/ES6-Promise/">ES6-Promise</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/11/ES6-迭代/">ES6-迭代</a>
           </li>
         
@@ -911,14 +964,6 @@
         
           <li>
             <a href="/2019/01/11/ES6-模块/">ES6-模块</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/11/ES6-解构赋值/">ES6-解构赋值</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/ES6-对象初始化/">ES6-对象初始化</a>
           </li>
         
       </ul>

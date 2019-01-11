@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6-类 | mozhenghong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原型 obj.toString()等价于window.Object.prototype.toString.call(obj)call里面的obj是this  类：拥有相同属性的对象  构造函数：用来创建某个类的对象的函数  类类声明 要声明一个类，你可以使用带有class关键字的类名 constructor里面写自由属性 constructor外面写person类的共有属性  1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6-类">
+<meta property="og:url" content="http://yoursite.com/2019/01/11/ES6-类/index.html">
+<meta property="og:site_name" content="mozhenghong">
+<meta property="og:description" content="原型 obj.toString()等价于window.Object.prototype.toString.call(obj)call里面的obj是this  类：拥有相同属性的对象  构造函数：用来创建某个类的对象的函数  类类声明 要声明一个类，你可以使用带有class关键字的类名 constructor里面写自由属性 constructor外面写person类的共有属性  1234567891">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14473072-da72309af169b818.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14473072-5d098d7842491d66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-01-11T09:09:40.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6-类">
+<meta name="twitter:description" content="原型 obj.toString()等价于window.Object.prototype.toString.call(obj)call里面的obj是this  类：拥有相同属性的对象  构造函数：用来创建某个类的对象的函数  类类声明 要声明一个类，你可以使用带有class关键字的类名 constructor里面写自由属性 constructor外面写person类的共有属性  1234567891">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14473072-da72309af169b818.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="mozhenghong" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">mozhenghong</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ES6-类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/11/ES6-类/" class="article-date">
+  <time datetime="2019-01-11T08:24:44.000Z" itemprop="datePublished">2019-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6-类
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><ul>
+<li><p><code>obj.toString()</code>等价于<br><code>window.Object.prototype.toString.call(obj)</code><br><br>call里面的obj是this</p>
+</li>
+<li><p>类：拥有相同属性的对象</p>
+</li>
+<li>构造函数：用来创建某个类的对象的函数</li>
+</ul>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h4 id="类声明"><a href="#类声明" class="headerlink" title="类声明"></a>类声明</h4><ul>
+<li>要声明一个类，你可以使用带有class关键字的类名</li>
+<li>constructor里面写自由属性</li>
+<li>constructor外面写person类的共有属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class person&#123;</span><br><span class="line">    constructor(name,age)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    walk()&#123;</span><br><span class="line">        console.log(&apos;走两步&apos;)</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line">－－－－－－－－－－－－－－－－－－－</span><br><span class="line">var momo = new person(&apos;momo&apos;,18)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结果如下：<br><img src="https://upload-images.jianshu.io/upload_images/14473072-da72309af169b818.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><ul>
+<li>extends 关键字在类声明中用于创建一个类作为另一个类的一个子类。</li>
+<li>super()用于调用对象的父对象上的函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Animals&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    walk()&#123;</span><br><span class="line">        console.log(&apos;走两步&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class dog extends Animals&#123;</span><br><span class="line">    constructor(age)&#123;</span><br><span class="line">        super()　//执行Ａnimals的constructor,将Ａnimals的constructor中的内容弄过来</span><br><span class="line"></span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    speak()&#123;</span><br><span class="line">        console.log(&apos;旺旺&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var p = new dog(3)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行结果如下：</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14473072-5d098d7842491d66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>####　静态方法</p>
+<ul>
+<li>static 关键字用来定义一个类的一个静态方法.</li>
+<li>静态方法是可以直接用class后面类名调用的方法，例如　person.xxx</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class person&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    static speak()&#123;</span><br><span class="line">        console.log(&apos;chinese&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    walk()&#123;</span><br><span class="line">        console.log(&apos;walk&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">person.speak() // 打印出&apos;chinese&apos;</span><br><span class="line"></span><br><span class="line">person.walk()  //报错！</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/11/ES6-类/" data-id="cjqrtmx7e000ecy3qp74spvfo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/11/ES6-Promise/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ES6-Promise</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/11/ES6-类/">ES6-类</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/ES6-Promise/">ES6-Promise</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/ES6-迭代/">ES6-迭代</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/ES6-新增数据类型/">ES6-新增数据类型</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/ES6-模块/">ES6-模块</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 莫正红<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

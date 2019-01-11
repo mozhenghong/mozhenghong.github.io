@@ -62,6 +62,312 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js里的数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/13/js里的数据类型/" class="article-date">
+  <time datetime="2018-11-13T02:19:41.000Z" itemprop="datePublished">2018-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/js里的数据类型/">js里的数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据类型-7种"><a href="#数据类型-7种" class="headerlink" title="数据类型(7种)"></a>数据类型(7种)</h2><ol>
+<li>数值(Number)</li>
+</ol>
+<ul>
+<li>javaScript内部所有数字都是以<font color="red">64位浮点数</font>形式存储，即便整数也是如此。</li>
+<li>数值的进制<ul>
+<li>十进制： 没有前导0的数值，1+.1=1.1;1+1.1=1.1</li>
+<li>八进值：有前缀0o或0O的数值</li>
+<li>十六进制：有前缀0x或0X的数值</li>
+<li>二进制：有前缀0b或0B的数值</li>
+</ul>
+</li>
+<li>特殊数值–NaN<ul>
+<li>非数字(not a number),主要出现在将字符串解析成数字出错的场合，数据类型依然是Number</li>
+<li>0除以0会得到NaN</li>
+<li>NaN不等于任何值，包括它本身</li>
+<li>NaN与任何值（包括它本身）的运算，得到的都是NaN</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>字符串(string)</li>
+</ol>
+<ul>
+<li>‘’（空字符串）和‘ ’（空格字符串）不一样，空字符串长度为0，空格字符串长度为1</li>
+<li>若要在单引号内部使用单引号，就必须在内部的单引号前面加反斜杠\用来转义<ul>
+<li><code>\&#39;</code>:单引号</li>
+<li><code>\n</code>:回车</li>
+<li><code>\t</code>:制表符 </li>
+<li><code>\\</code>:一个反斜杠符号</li>
+</ul>
+</li>
+<li>多行字符串的书写<ul>
+<li>‘1234’+<br><br>‘5678’</li>
+</ul>
+</li>
+<li>length属性</li>
+</ul>
+<p>返回字符串的长度，该属性是无法改变的</p>
+<ul>
+<li>base64转码<ul>
+<li>btoa（）：任意值转为base64编码</li>
+<li>atob（）：base64编码转为原来的值</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>布尔值(Boolean)</li>
+</ol>
+<ul>
+<li>a&amp;&amp;b:a、b同时为真才为真</li>
+<li>a||b：a、b同时为假才为假</li>
+<li>如果JavaScript预期某个位置应该是布尔值，会将该位置上现有的值自动转化为布尔值</li>
+</ul>
+<ol start="4">
+<li><p>symbol(一般不用)</p>
+</li>
+<li><p>null</p>
+</li>
+</ol>
+<ul>
+<li>表示空值，即该处的值现在为空</li>
+</ul>
+<ol start="6">
+<li>undefined</li>
+</ol>
+<ul>
+<li>表示未定义</li>
+<li>区别：<ul>
+<li>变量没有赋值，为undefined</li>
+<li>object不想给值，就给null，非对象不想给值就给undefined</li>
+<li>null表示空对象，undefined表示非空对象</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>对象(object)</li>
+</ol>
+<ul>
+<li>对象是一种键值对的集合，是一种<font color="red">无序的符合数据集合</font></li>
+<li><font color="blue">对象的所有键名都是字符串</font>，如果键名不符合标识名的条件，且不是数字，必须加上引号，否则会报错<ul>
+<li>第一个字符必须是一个字母、下划线（_）或一个美元符号（$）</li>
+<li>其他字符可以是字母、数字、下划线或者美元符号</li>
+<li>中文是合法的标识符，可以用作变量名。</li>
+</ul>
+</li>
+<li><p>空字符串也可以为键名</p>
+</li>
+<li><p>对象的引用</p>
+<ul>
+<li><p>obj[‘keyname’],必须加‘’<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var name=&apos;x&apos;</span><br><span class="line">var obj=&#123;</span><br><span class="line">    name:&apos;mm&apos;</span><br><span class="line">&#125;</span><br><span class="line">obj[name]==&gt;obj[&apos;x&apos;]==&gt;undefined</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>obj.keyname(前提是keyname符合标识符命名规则)</p>
+</li>
+<li>数值键名必须使用方括号运算符引用</li>
+</ul>
+</li>
+<li><p>属性的赋值</p>
+</li>
+</ul>
+<p>点运算符和方括号运算符不仅可以读取值，也可以赋值</p>
+<ul>
+<li>属性的查看</li>
+</ul>
+<p>查看一个属性本身的所有方法，可以使用<code>Object.keys(obj)</code></p>
+<ul>
+<li><p>属性的删除</p>
+<ul>
+<li>delete命令用于删除对象的属性，删除成功后返回true:<br><br><code>delete  obj[&#39;keyname&#39;]</code>或<code>delete obj.keyname</code><br><br><em>delete把值和value都变成undefinde,而obj.keyundefined=undefined只是把value变成undefined，键名依然存在</em></li>
+<li>删除一个不存在的属性，delete不会报错，并且返回true，只有当该属性存在，且不得删除时，才会返回false</li>
+<li>delete命令只能删除对象本身的属性，无法删除继承的属性</li>
+</ul>
+</li>
+<li><p>属性是否存在： in运算符</p>
+<ul>
+<li>in运算符用于检查对象是否包含某个属性（检查啊的是键名不是键值），如果包含就返回true，不包含返回false<br><br><code>‘keyname’ in obj</code><ul>
+<li>in 运算符不能识别哪些对象是自身的 哪些是继承的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>遍历：for…in循环</p>
+<ul>
+<li><p>for…in循环用来遍历一个对象的全部属性，跳过不可遍历的属性，不仅遍历自身属性，还遍历继承的属性,把原型链上可枚举的属性遍历出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">    name:&apos;xxx&apos;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br><span class="line">  for(var key in person)&#123;</span><br><span class="line">      console.log(key)</span><br><span class="line">  &#125;</span><br><span class="line">  //name age</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Object.keys(obj)/Object.values(obj)<br><br>只遍历自身的可枚举属性</li>
+<li>Object.getOwnPropertyDescriptor()<br><br>遍历自身的可枚举属性+不可枚举属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>typeof运算符</p>
+</li>
+</ul>
+<p>返回一个值的数据类型,特殊的只有两种<br></p>
+<ul>
+<li><code>typeof null</code> //‘object’</li>
+<li><code>typeof function</code> //‘function’</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/13/js里的数据类型/" data-id="cjqrtmx84000zcy3q7buo36j1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-scss基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/05/scss基础/" class="article-date">
+  <time datetime="2018-11-05T15:05:26.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/05/scss基础/">scss基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="学习环境"><a href="#学习环境" class="headerlink" title="学习环境"></a>学习环境</h2><ol>
+<li>安装parcel</li>
+</ol>
+<ul>
+<li>在终端打开要编写scss的文件夹</li>
+<li>运行以下命令安装parcel：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm i -g parcel-bundler</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行<code>npx parcel index.html</code>得到网址，打开网址预览scss，可直接将scss转换为css</li>
+</ul>
+<ol start="2">
+<li>在线学习环境</li>
+</ol>
+<p><a href="https://codepen.io/" target="_blank" rel="noopener">codepen</a></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ol>
+<li>嵌套选择器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ul&#123;</span><br><span class="line">    属性：属性值；</span><br><span class="line">    &gt;li&#123;</span><br><span class="line">        属性：属性值；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li>变量</li>
+</ol>
+<p>例如:<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$color:red;</span><br><span class="line">body&#123;</span><br><span class="line">    border: 1px solid $color;</span><br><span class="line">    div&#123;</span><br><span class="line">        background:$color;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>mixin</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@mixin xxx($color)&#123;</span><br><span class="line">border: 1px solid $color;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    @include xxx(red);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>placeholder</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%box&#123;</span><br><span class="line">    box-shadow:0 0 3px block;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    div&#123;</span><br><span class="line">        @extend %box;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="scss相关"><a href="#scss相关" class="headerlink" title="scss相关"></a>scss相关</h3><ol>
+<li><p>BEM（css命名法）</p>
+<p>Block Element Modifior</p>
+</li>
+<li><p>&amp;符号</p>
+<p> 可以用&amp;代替父元素的class值</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UserCard&#123;</span><br><span class="line">    UserCard-name&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">取代为：</span><br><span class="line">UserCard&#123;</span><br><span class="line">    &amp;-name&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>嵌套属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">font:&#123;</span><br><span class="line">    size:16px;</span><br><span class="line">    weight:blod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注释</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行：//xxxxxxx</span><br><span class="line">多行：/*xxxx</span><br><span class="line">      xxxx*/</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>变量作用域</li>
+</ol>
+<ul>
+<li>将变量放到某个选择器的{}中，作用域为这个选择器</li>
+<li>作用域覆盖，就近原则</li>
+<li><code>&amp;red:#f60 !global</code>强制变为全局变量</li>
+<li><code>$red-color</code>和<code>$red_color</code>被看作是一个变量</li>
+</ul>
+<ol start="6">
+<li>运算</li>
+</ol>
+<ul>
+<li>css:<code>calc(200px / 2)</code></li>
+<li>scss:直接做加、减、乘、模（100%3   //1）</li>
+<li>除要满足其中一个条件:<br><br>.该值存在一个变量，例如<code>$red/3</code><br><br>.用括号括起来，例如：<code>（100px/3）</code><br><br>.该值作为另一个表达式的一部分，例如<code>100px/3-0</code></li>
+</ul>
+<ol start="7">
+<li>颜色相关运算</li>
+</ol>
+<ul>
+<li><code>darken(颜色，10%)</code>颜色加深10%.</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$red:#ff0000;</span><br><span class="line">color:$red+#888888;</span><br><span class="line">==&gt;color:#ff8888;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>字符串插值</li>
+</ol>
+</li>
+<li><p><code>#{$red}</code>插入<code>#ff0000</code>字符串。</p>
+</li>
+</ul>
+<ol start="9">
+<li>循环<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$step:25%</span><br><span class="line">$n:10%</span><br><span class="line">@keyframes animationname&#123;</span><br><span class="line">    @for $i from 0 to 4&#123;</span><br><span class="line">        #&#123;$i*$step&#125;&#123;</span><br><span class="line">            @if $i%2==0&#123;</span><br><span class="line">                transforrm:translateX(-$n)</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    transform:translateX($n)</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="scss响应式"><a href="#scss响应式" class="headerlink" title="scss响应式"></a>scss响应式</h3><ol>
+<li>动态缩放–单位：vw</li>
+</ol>
+<ul>
+<li><p>scss函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@function px($npx)&#123;</span><br><span class="line">    @return $npx/375*100vw;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用：</p>
+</li>
+</ul>
+<p><code>width: px(61)</code>//宽度为61px，转换为vw单位。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/05/scss基础/" data-id="cjqrtmx83000ycy3qbd7ezip3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Bootstrap框架" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/31/Bootstrap框架/" class="article-date">
@@ -124,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjqrpscla0001yr3qfxuzo50j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/Bootstrap框架/" data-id="cjqrtmx6i0000cy3qyal483i5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjqrpsclz000iyr3qhoe9oqjy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-IFC/" data-id="cjqrtmx7m000kcy3qfh5dxh16" class="article-share-link">Share</a>
       
       
     </footer>
@@ -259,7 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjqrpscmp0012yr3qao5f3ieb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/数据结构/" data-id="cjqrtmx8a0014cy3qrr73um3x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -328,7 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/算法初级/" data-id="cjqrpscmq0013yr3q1luiwb4t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/算法初级/" data-id="cjqrtmx8b0015cy3qst1lrzjy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +712,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/css-BFC/" data-id="cjqrpscm1000jyr3qekle3u6z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/css-BFC/" data-id="cjqrtmx7o000lcy3qlhxymyq9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,7 +797,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjqrpscld0002yr3q5dwr9pa9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/31/CSS-REM/" data-id="cjqrtmx6u0003cy3q5l8foutz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -611,7 +917,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjqrpscm8000qyr3q2dy7m9s2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/flex布局与布局套路/" data-id="cjqrtmx7x000scy3qf5534wad" class="article-share-link">Share</a>
       
       
     </footer>
@@ -663,134 +969,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjqrpscm5000nyr3qfe2tw10d" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-icon全解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/30/css-icon全解/" class="article-date">
-  <time datetime="2018-10-30T03:23:50.000Z" itemprop="datePublished">2018-10-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/30/css-icon全解/">css-icon全解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Photoshop"><a href="#Photoshop" class="headerlink" title="Photoshop"></a>Photoshop</h4><ol>
-<li>拿到的设计图为psd格式要转换成png格式的单个图标</li>
-</ol>
-<p>在图上右键==&gt;点击要选的图层，得到图层==&gt;在图层上右键，复制图层（duplicate layer）==&gt;image ==&gt;trim(裁剪)==&gt;image==&gt;canvas size(修改画布大小)==&gt;file==&gt;export==&gt;quick export png(导出png格式)</p>
-<ol start="2">
-<li>拿到png格式设计图</li>
-</ol>
-<p>用Photoshop打开png==&gt;选中其中一个图标==&gt;image==&gt;crop(剪切)==&gt;选择魔法棒工具==&gt;选中要选择的区域==&gt;右键==&gt;select inverse==&gt;按delete键删除==&gt;右键==&gt;decelect==&gt;image==&gt;trim==&gt;image==&gt;canvas size(修改画布大小)==&gt;file==&gt;export==&gt;quick export png(导出png格式)</p>
-<h2 id="icon的各种做法"><a href="#icon的各种做法" class="headerlink" title="icon的各种做法"></a>icon的各种做法</h2><ol>
-<li><code>&lt;img&gt;</code>法</li>
-</ol>
-<p>可自适应宽高，改变宽，高也会自动改变，会保持原本的默认比例。</p>
-<ol start="2">
-<li><p><code>&lt;background&gt;</code>法</p>
-</li>
-<li><p>SVG 法（推荐）</p>
-</li>
-</ol>
-<p>（1）在<a href="http://iconfont.cn" target="_blank" rel="noopener">iconfont网站</a>搜索想要的矢量图，加入购物车</p>
-<p>（2）点击添加至项目</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14473072-fc9ac8b16ef187d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>(3）点击symbol，将下方代码复制到script的src中</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14473072-60d921b2cd9d245c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>(4)点击使用帮助，然后按照symbol引用下的要求做即可。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-icon全解/" data-id="cjqrpscm4000myr3qsx58uxvm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-堆叠上下文" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/30/css-堆叠上下文/" class="article-date">
-  <time datetime="2018-10-30T03:05:57.000Z" itemprop="datePublished">2018-10-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/30/css-堆叠上下文/">css-堆叠上下文</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="堆叠顺序"><a href="#堆叠顺序" class="headerlink" title="堆叠顺序"></a>堆叠顺序</h3><ol>
-<li><p>当父元素未被定位时(从里到外)：</p>
-<p>(1)z-index为负</p>
-<p>(2)background</p>
-<p>(3)border</p>
-<p>(4)div</p>
-<p>(5)float</p>
-<p>(6)文字、内联</p>
-<p>(7)position (z-index:0)</p>
-<p>(8)z-index大于0</p>
-<p><em>同级相互比较，谁出现后谁靠前</em></p>
-</li>
-<li><p>当父元素被定位时(relative)（成立了一个堆叠上下文）</p>
-</li>
-</ol>
-<p>从里到外的顺序为(2)=&gt;(3)=&gt;(1)=&gt;(4)=&gt;(5)=&gt;(6)=&gt;(7)=&gt;(8)</p>
-<h3 id="堆叠上下文-the-stacking-context"><a href="#堆叠上下文-the-stacking-context" class="headerlink" title="堆叠上下文(the stacking context)"></a>堆叠上下文(the stacking context)</h3><p><strong>我们只知道一些属性会触发堆叠上下文，但并不知道堆叠上下文是什么，若满足下列条件之一的就是堆叠上下文：</strong></p>
-<ul>
-<li>根元素 (HTML),</li>
-<li>z-index 值不为 “auto”的 绝对/相对定位，</li>
-<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</li>
-<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
-<li>transform 属性值不为 “none”的元素，</li>
-<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
-<li>filter值不为“none”的元素，</li>
-<li>perspective值不为“none”的元素，</li>
-<li>isolation 属性被设置为 “isolate”的元素，</li>
-<li>position: fixed</li>
-<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
-<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/css-堆叠上下文/" data-id="cjqrpscm2000kyr3q0rh73evp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/30/css-移动端页面（响应式）/" data-id="cjqrtmx7t000pcy3q245i816z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -804,7 +983,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -836,6 +1015,14 @@
       <ul>
         
           <li>
+            <a href="/2019/01/11/ES6-类/">ES6-类</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/ES6-Promise/">ES6-Promise</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/11/ES6-迭代/">ES6-迭代</a>
           </li>
         
@@ -845,14 +1032,6 @@
         
           <li>
             <a href="/2019/01/11/ES6-模块/">ES6-模块</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/11/ES6-解构赋值/">ES6-解构赋值</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/ES6-对象初始化/">ES6-对象初始化</a>
           </li>
         
       </ul>
